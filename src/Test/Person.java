@@ -26,8 +26,8 @@ public class Person extends MENU {
         }
     }
     void menu(){
-        System.out.println("메뉴명 : " + getMenu());
-        System.out.println("메뉴개수 : " + getCnt());
+        System.out.println("메뉴명 : " + name);
+        System.out.println("메뉴개수 : " );
     }
     int price;
     int pay(int money){
