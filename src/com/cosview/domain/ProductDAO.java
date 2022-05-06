@@ -32,6 +32,19 @@ public class ProductDAO {
 		}
 	}
 	
+	public boolean Select(ProductDTO dto) {
+		try {
+			pstmt = conn.prepareStatement("select * from product_tbl");
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				System.out.println(rs.getString("name") + " " + rs.getString("brand") + " " + rs.getInt("price") + 
+						" " + rs.getString("volume"));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 	
 	public boolean Insert(ProductDTO dto) {
 		try {
