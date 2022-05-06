@@ -1,7 +1,7 @@
-package Main;
+package com.cosview.main;
 
-import Product.domain.ProductDAO;
-import Product.dto.ProductDTO;
+import com.cosview.domain.ProductDAO;
+import com.cosview.dto.ProductDTO;
 
 public class Main {
 

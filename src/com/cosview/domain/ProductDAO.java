@@ -1,11 +1,11 @@
-package Product.domain;
+package com.cosview.domain;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import Product.dto.ProductDTO;
+import com.cosview.dto.ProductDTO;
 
 public class ProductDAO {
 

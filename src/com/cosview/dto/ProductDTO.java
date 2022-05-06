@@ -1,4 +1,4 @@
-package Product.dto;
+package com.cosview.dto;
 
 public class ProductDTO {
  private String name;
