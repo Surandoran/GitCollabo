@@ -9,8 +9,7 @@ import java.util.Scanner;
 import cosmeticdto.ProductDTO;
 
 public class ProductDAO extends DAO {
-
-
+    int result;
 
     public boolean Inqury(ProductDTO dto) {    //조회
         try {
@@ -23,7 +22,7 @@ public class ProductDAO extends DAO {
             while (rs.next()) {
                 System.out.println(
                         rs.getString("name") + "\t" + rs.getString("brand") + "\t" + rs.getInt("price")
-                                + "\t" + rs.getString("volume")
+                                + "\t" + rs.getString("volume") + "\t" + rs.getInt("code")
                 );
 
             }
@@ -42,13 +41,14 @@ public class ProductDAO extends DAO {
 
     public boolean Insert(ProductDTO dto) {    //삽입
         try {
-            pstmt = conn.prepareStatement("insert into product_tbl values(?,?,?,?)");
-            pstmt.setString(1, dto.getname());
-            pstmt.setString(2, dto.getbrand());
-            pstmt.setInt(3, dto.getprice());
-            pstmt.setString(4, dto.getvolume());
+            pstmt = conn.prepareStatement("insert into product_tbl values(?,?,?,?,?)");
+            pstmt.setString(1, dto.getName());
+            pstmt.setString(2, dto.getBrand());
+            pstmt.setInt(3, dto.getPrice());
+            pstmt.setString(4, dto.getVolume());
+            pstmt.setInt(5, dto.getCode());
 
-            int result = pstmt.executeUpdate();
+            result = pstmt.executeUpdate();
 
             if (result != 0) {
                 return true;
@@ -69,21 +69,20 @@ public class ProductDAO extends DAO {
     public boolean Update(ProductDTO dto) {
         try {
             //SQL전송 객체
-            pstmt = conn.prepareStatement("update product_Tbl set name=?,brand=?,price=?,volume=? where name=?");
-            pstmt.setString(1, dto.getname());
-            pstmt.setString(2, dto.getbrand());
-            pstmt.setInt(3, dto.getprice());
-            pstmt.setString(4, dto.getvolume());
-            pstmt.setString(5, dto.getname());
+            pstmt = conn.prepareStatement("update product_Tbl set name=?,brand=?,price=?,volume=? where code=?");
+            pstmt.setString(1, dto.getName());
+            pstmt.setString(2, dto.getBrand());
+            pstmt.setInt(3, dto.getPrice());
+            pstmt.setString(4, dto.getVolume());
+            pstmt.setInt(5, dto.getCode());
 
             //SQL전송
-            int result = pstmt.executeUpdate();
+            result = pstmt.executeUpdate();
 
             if (result != 0) {
-                System.out.println("Update 성공");
-            } else {
-                System.out.println("Update 실패");
+                return true;
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -96,20 +95,19 @@ public class ProductDAO extends DAO {
         return false;
     }
 
+
     public boolean Delete(ProductDTO dto) {
         //연결
         try {
             //SQL전송객체 생성
-            pstmt = conn.prepareStatement("delete from product_tbl where name=?");
-            pstmt.setString(1, "달팽이크림");
+            pstmt = conn.prepareStatement("delete from product_tbl where code=?");
+            pstmt.setInt(1, dto.getCode());
 
             //SQL 전송
-            int result = pstmt.executeUpdate();
+            result = pstmt.executeUpdate();
 
             if (result != 0) {
-                System.out.println("Delete 완료");
-            } else {
-                System.out.println("Delete 실패");
+                return true;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -129,5 +127,6 @@ public class ProductDAO extends DAO {
         return false;
 
     }
+
 
 }

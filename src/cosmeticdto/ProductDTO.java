@@ -1,72 +1,72 @@
 package cosmeticdto;
 
-public class ProductDTO extends DTO{
- private String name;
- private String brand;
- private int price;
- private String volume;
+public class ProductDTO extends DTO {
+    private String name;
+    private String brand;
+    private int price;
+    private String volume;
+    private int code;
 
- 
- //생성자
- public ProductDTO(String name, String brand, int price, String volume) {
-		super();
-		this.name = name;
-		this.brand = brand;
-		this.price = price;
-		this.volume = volume;
-	}
+    public ProductDTO(String name, String brand, int price, String volume, int code) {
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+        this.volume = volume;
+        this.code = code;
+    }
 
+    public ProductDTO(int code){
+        this.code = code;
+    }
 
+    public String getName() {
+        return name;
+    }
 
- 
- //Getter and Setter
- public String getname() {
-		return name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    public String getBrand() {
+        return brand;
+    }
 
-	public void setname(String name) {
-		this.name = name;
-	}
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
 
+    public int getPrice() {
+        return price;
+    }
 
-	public String getbrand() {
-		return brand;
-	}
+    public void setPrice(int price) {
+        this.price = price;
+    }
 
+    public String getVolume() {
+        return volume;
+    }
 
-	public void setbrand(String brand) {
-		this.brand = brand;
-	}
+    public void setVolume(String volume) {
+        this.volume = volume;
+    }
 
+    public int getCode() {
+        return code;
+    }
 
-	public int getprice() {
-		return price;
-	}
+    public void setCode(int code) {
+        this.code = code;
+    }
 
-
-	public void setprice(int price) {
-		this.price = price;
-	}
-
-
-	public String getvolume() {
-		return volume;
-	}
-
-
-	public void setvolume(String volume) {
-		this.volume = volume;				
-	}
-
-
-	//toString()
-
-	@Override
-	public String toString() {
-		return "ProductDTO [name=" + name + ", brand=" + brand + ", price=" + price + ", volume=" + volume + "]";
-	}
-	
-	
-	
+    @Override
+    public String toString() {
+        return "ProductDTO{" +
+                "name='" + name + '\'' +
+                ", brand='" + brand + '\'' +
+                ", price=" + price +
+                ", volume='" + volume + '\'' +
+                ", code=" + code +
+                '}';
+    }
 }

@@ -2,11 +2,15 @@ package controller;
 
 import cosmeticdto.DTO;
 import cosmeticdto.ProductDTO;
-import service.ReviewService;
+import service.ProductService;
 
-public class ReviewController implements SubController{
-    ReviewService service = new ReviewService();
-    public boolean execute(String menu, int num, DTO dto) {
+public class ProduntController implements SubController{
+
+    ProductService service = new ProductService();
+
+    @Override
+    public boolean execute(int num,DTO dto) {
+
         //downcasting
         ProductDTO bdto = (ProductDTO)dto;
 

@@ -5,6 +5,7 @@ import controller.SubController;
 import cosmeticdto.DTO;
 import domain.ProductDAO;
 import cosmeticdto.ProductDTO;
+import view.GUIViewer;
 import view.Viewer;
 
 import javax.swing.text.View;
@@ -18,13 +19,13 @@ public class Main {
 //		ProductDTO dto = new ProductDTO("수분크림", "닥터지", 12000, "50ml");
 //		ProductDAO dao = new ProductDAO();
 //
-////		dao.Insert(dto);	//삽입
-////		dao.Inqury(dto);	//조회
-////		dao.Update(dto);	//수정
+//		dao.Insert(dto);	//삽입
+//		dao.Inqury(dto);	//조회
+//		dao.Update(dto);	//수정
 //		dao.Delete(dto);	//삭제
 		Viewer view = new Viewer();
 //		view.product();
-
-		view.LoginMenu();
+//		view.LoginMenu();
+		new GUIViewer();
 	}
 }
