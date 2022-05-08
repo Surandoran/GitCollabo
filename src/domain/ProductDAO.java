@@ -26,7 +26,9 @@ public class ProductDAO extends DAO {
                 );
 
             }
-
+            if (result != 0) {
+                return true;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -112,17 +114,8 @@ public class ProductDAO extends DAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            try {
-                pstmt.close();
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
-            try {
-                conn.close();
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
-
+            try {pstmt.close();} catch (Exception e1) {e1.printStackTrace();}
+            try {conn.close();} catch (Exception e1) {e1.printStackTrace();}
         }
         return false;
 

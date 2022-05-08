@@ -1,12 +1,14 @@
 package cosmeticdto;
 
+import javax.swing.*;
+
 public class ProductDTO extends DTO {
     private String name;
     private String brand;
     private int price;
     private String volume;
     private int code;
-
+    
     public ProductDTO(String name, String brand, int price, String volume, int code) {
         this.name = name;
         this.brand = brand;
@@ -14,10 +16,10 @@ public class ProductDTO extends DTO {
         this.volume = volume;
         this.code = code;
     }
-
     public ProductDTO(int code){
         this.code = code;
     }
+
 
     public String getName() {
         return name;

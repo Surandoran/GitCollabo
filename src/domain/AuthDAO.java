@@ -10,7 +10,7 @@ public class AuthDAO extends DAO{
     public boolean MemberLogin(AuthDTO dto) {
 
         try{
-            pstmt = conn.prepareStatement("select id,pw from employee_tbl where id = ?");
+            pstmt = conn.prepareStatement("select id,pw from member_tbl where id = ?");
             pstmt.setString(1, dto.getId());
             rs = pstmt.executeQuery();
 
@@ -40,7 +40,7 @@ public class AuthDAO extends DAO{
     //직원로그인(num==2)
     public boolean EmployeeLogin(AuthDTO dto){
         try{
-            pstmt = conn.prepareStatement("select id,pw from member_tbl where id = ?");
+            pstmt = conn.prepareStatement("select id,pw from employee_tbl where id = ?");
             pstmt.setString(1, dto.getId());
             rs = pstmt.executeQuery();
 

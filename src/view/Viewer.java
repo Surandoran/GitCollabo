@@ -29,11 +29,16 @@ public class Viewer {
     public void LoginMenu() {
         while (true) {
             System.out.println("----------Login-----------");
-            System.out.println("1. 회원로그인");
-            System.out.println("2. 직원로그인");
-            System.out.println("3. 회원 등록");
-            System.out.println("4. 직원 등록");
-            System.out.println("5. 종료");
+            System.out.println("1. 회원 로그인");
+            System.out.println("2. 회원 등록");
+            System.out.println("3. 회원 조회");
+            System.out.println("4. 회원 수정");
+            System.out.println("5. 직원 로그인");
+            System.out.println("6. 직원 등록");
+            System.out.println("7. 직원 조회");
+            System.out.println("8. 직원 수정");
+            System.out.println("9. 삭제");
+            System.out.println("10. 종료");
             System.out.println("----------Login-----------");
             System.out.print("번호 : ");
             num = sc.nextInt();
@@ -52,13 +57,20 @@ public class Viewer {
                         System.out.println("로그인 실패...");
                     }
                     break;
-                case 2: //직원로그인
+                case 2: //회원 등록
+
+                    break;
+                case 3: //회원 조회
+                    break;
+                case 4: //직원 수정
+                    break;
+                case 5: //직원 로그인
                     System.out.print("직원 ID 입력 : ");
                     String tmpid2 = sc.next();
                     System.out.print("직원 PW 입력 : ");
                     String tmppw2 = sc.next();
                     AuthDTO dto2 = new AuthDTO(tmpid2, tmppw2);
-                    boolean r2 = controller.SubControllerEX("AUTH", 1, dto2);
+                    boolean r2 = controller.SubControllerEX("AUTH", 2, dto2);
                     if (r2) {
                         //인증성공 -> 직원메뉴출력
                         System.out.println("로그인 성공!!!");
@@ -67,17 +79,24 @@ public class Viewer {
                         System.out.println("로그인 실패...");
                     }
                     break;
-                case 3: //종료
-                    System.out.println("프로그램을 종료합니다");
-                    System.exit(-1);
+                case 6: //직원 등록
                     break;
+                case 7: //직원 조회
+                    break;
+                case 8: //직원 수정
+                    break;
+                case 9: //삭제
+                    break;
+                case 10: //종료
+                    System.out.println("프로그램을 종?료합니다");
+                    System.exit(-1);
                 default:
                     System.out.println("잘못입력하셨습니다.");
             }//switch 끝
         }//while 끝
     }
 
-    public void product() {
+    public void product() { //직원메뉴
         while (true) {
             System.out.println("-------------PRODUCT------------");
             System.out.println("1 Inqury(조회)");
@@ -105,9 +124,9 @@ public class Viewer {
                     System.out.print("코드 : ");
                     code = sc.nextInt();
 
-                    ProductDTO DTO = new ProductDTO(name, brand, price, volume, code);
+                    ProductDTO dto1 = new ProductDTO(name, brand, price, volume, code);
 
-                    boolean result = controller.SubControllerEX("COSMETIC", 2, DTO);
+                    boolean result = controller.SubControllerEX("COSMETIC", 2, dto1);
                     //cosmetic선택 2번메뉴 삽입 , 저장된 상품정보
                     if (result) //만약 result 가 성공했다면
                         System.out.println("INSERT성공");
@@ -126,9 +145,9 @@ public class Viewer {
                     volume = sc.next();
                     System.out.print("수정 코드 : ");
                     code = sc.nextInt();
-                    ProductDTO DTO2 = new ProductDTO(name, brand, price, volume, code);
+                    ProductDTO dto2 = new ProductDTO(name, brand, price, volume, code);
 
-                    boolean result2 = controller.SubControllerEX("COSMETIC", 3, DTO2);
+                    boolean result2 = controller.SubControllerEX("COSMETIC", 3, dto2);
 
                     if (result2) {//만약 result2가 성공했다면
                         System.out.println("Update 성공!");
@@ -142,16 +161,15 @@ public class Viewer {
                     System.out.print("제거상품코드 : ");
                     code = sc.nextInt();
 
-                    ProductDTO DTO3 = new ProductDTO(code);
+                    ProductDTO dto3 = new ProductDTO(code);
 
-                    boolean result3 = controller.SubControllerEX("COSMETIC", 4, DTO3);
+                    boolean result3 = controller.SubControllerEX("COSMETIC", 4, dto3);
 
-                    if(result3) { //만약 삭제성공했다면
+                    if (result3) { //만약 삭제성공했다면
                         System.out.println("DELETE 성공!");
-                        dao.Inqury(dto);
-                    }else{
+                    } else {
                         System.out.println("DELTET 실패!");
-                        }
+                    }
                     break;
                 case 5: //Mainmenu로 return
                     System.out.println("로그인 메뉴로 전환합니다!");
