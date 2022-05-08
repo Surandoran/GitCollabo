@@ -22,7 +22,9 @@ public class Viewer {
     //controller 객체추가
     FrontController controller = new FrontController();
     ProductDAO dao = new ProductDAO();
-    ProductDTO dto;
+    AuthDTO adto;
+    ProductDTO pdto;
+    boolean r;
 
 
     //메인메뉴
@@ -48,9 +50,9 @@ public class Viewer {
                     String tmpid = sc.next();
                     System.out.print("회원 PW 입력 : ");
                     String tmppw = sc.next();
-                    AuthDTO dto = new AuthDTO(tmpid, tmppw);
-                    boolean r1 = controller.SubControllerEX("AUTH", 1, dto);
-                    if (r1) {
+                    adto = new AuthDTO(tmpid, tmppw);
+                    r = controller.SubControllerEX("AUTH", 1, adto);
+                    if (r) {
                         //인증성공 -> 회원메뉴출력
                         System.out.println("로그인 성공!!!");
                     } else {
@@ -69,9 +71,9 @@ public class Viewer {
                     String tmpid2 = sc.next();
                     System.out.print("직원 PW 입력 : ");
                     String tmppw2 = sc.next();
-                    AuthDTO dto2 = new AuthDTO(tmpid2, tmppw2);
-                    boolean r2 = controller.SubControllerEX("AUTH", 2, dto2);
-                    if (r2) {
+                    adto = new AuthDTO(tmpid2, tmppw2);
+                    r = controller.SubControllerEX("AUTH", 2, adto);
+                    if (r) {
                         //인증성공 -> 직원메뉴출력
                         System.out.println("로그인 성공!!!");
                         product();
@@ -110,7 +112,7 @@ public class Viewer {
             switch (num) {
                 case 1: //상품조회
                     System.out.println("상품조회요청!");
-                    dao.Inqury(dto);
+                    dao.Inqury(pdto);
                     break;
                 case 2: //상품추가
                     System.out.print("상품명 : ");
@@ -124,11 +126,11 @@ public class Viewer {
                     System.out.print("코드 : ");
                     code = sc.next();
 
-                    ProductDTO dto1 = new ProductDTO(name, brand, price, volume, code);
+                    pdto = new ProductDTO(name, brand, price, volume, code);
 
-                    boolean result = controller.SubControllerEX("COSMETIC", 2, dto1);
+                    r = controller.SubControllerEX("COSMETIC", 2, pdto);
                     //cosmetic선택 2번메뉴 삽입 , 저장된 상품정보
-                    if (result) //만약 result 가 성공했다면
+                    if (r) //만약 result 가 성공했다면
                         System.out.println("INSERT성공");
                     else
                         System.out.println("INSERT실패");
@@ -145,13 +147,13 @@ public class Viewer {
                     volume = sc.next();
                     System.out.print("수정 코드 : ");
                     code = sc.next();
-                    ProductDTO dto2 = new ProductDTO(name, brand, price, volume, code);
+                    pdto = new ProductDTO(name, brand, price, volume, code);
 
-                    boolean result2 = controller.SubControllerEX("COSMETIC", 3, dto2);
+                    r = controller.SubControllerEX("COSMETIC", 3, pdto);
 
-                    if (result2) {//만약 result2가 성공했다면
+                    if (r) {//만약 result2가 성공했다면
                         System.out.println("Update 성공!");
-                        dao.Inqury(dto);
+                        dao.Inqury(pdto);
                     } else {
                         System.out.println("Update 실패!");
                     }
@@ -161,11 +163,11 @@ public class Viewer {
                     System.out.print("제거상품코드 : ");
                     code = sc.next();
 
-                    ProductDTO dto3 = new ProductDTO(code);
+                    pdto = new ProductDTO(code);
 
-                    boolean result3 = controller.SubControllerEX("COSMETIC", 4, dto3);
+                    r = controller.SubControllerEX("COSMETIC", 4, pdto);
 
-                    if (result3) { //만약 삭제성공했다면
+                    if (r) { //만약 삭제성공했다면
                         System.out.println("DELETE 성공!");
                     } else {
                         System.out.println("DELTET 실패!");

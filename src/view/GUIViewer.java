@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 
 public class
 GUIViewer implements ActionListener {
+
     //컨트롤러 추가
     FrontController controller = new FrontController();
     AuthDTO adto;
@@ -27,21 +28,13 @@ GUIViewer implements ActionListener {
     JButton enter; //삽입
     JButton Update; //수정
     JButton Delete; //삭제
+
+    //상품정보
     JTextField name;
     JTextField brand;
     JTextField price;
     JTextField volume;
     JTextField code;
-
-    //입력받은값 저장
-
-    String Pname;
-    String Pbrand;
-    String Pprice;
-    String Pvolume;
-    String Pcode;
-
-
 
     //로그인 창 관련
     JFrame loginmenu;
@@ -357,6 +350,7 @@ GUIViewer implements ActionListener {
 
             r = controller.SubControllerEX("COSMETIC", 4, pdto);
             if(r){
+                System.out.println("삭제 성공!");
                 input.setVisible(false);
                 employeemenu.setVisible(true);
                 Employee();

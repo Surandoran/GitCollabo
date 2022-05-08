@@ -24,6 +24,7 @@ public class Main {
 //		dao.Update(dto);	//수정
 //		dao.Delete(dto);	//삭제
 //		view.product();
+//		Viewer view = new Viewer();
 //		view.LoginMenu();
 		new GUIViewer();
 	}
