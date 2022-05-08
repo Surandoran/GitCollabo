@@ -6,28 +6,41 @@ import cosmeticdto.AuthDTO;
 import cosmeticdto.DTO;
 import cosmeticdto.ProductDTO;
 import domain.ProductDAO;
+import jdk.nashorn.internal.scripts.JO;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GUIViewer implements ActionListener {
+public class
+GUIViewer implements ActionListener {
     //컨트롤러 추가
-    FrontController controller =new FrontController();
-    AuthDTO dto;
+    FrontController controller = new FrontController();
+    AuthDTO adto;
     boolean r;
 
     ProductDAO dao = new ProductDAO();
     ProductDTO pdto;
 
     //입력창
-    JFrame input;
-    JButton enter;
+    JFrame input;//삽입
+    JButton enter; //삽입
+    JButton Update; //수정
+    JButton Delete; //삭제
     JTextField name;
     JTextField brand;
     JTextField price;
     JTextField volume;
     JTextField code;
+
+    //입력받은값 저장
+
+    String Pname;
+    String Pbrand;
+    String Pprice;
+    String Pvolume;
+    String Pcode;
+
 
 
     //로그인 창 관련
@@ -56,13 +69,13 @@ public class GUIViewer implements ActionListener {
     JPanel pan = new JPanel();
 
     //생성자
-    public GUIViewer(){
+    public GUIViewer() {
         Login();
         System.out.println("로그인 창 생성!");
     }
 
     //로그인 메뉴
-    void Login(){
+    void Login() {
         loginmenu = new JFrame("로그인창");
         pan.setLayout(null);
 
@@ -82,15 +95,15 @@ public class GUIViewer implements ActionListener {
         rediogroup.add(employee);
         rediogroup.add(member);
 
-        id.setBounds(20,10,200,30);
-        pw.setBounds(20,50,200,30);
-        login.setBounds(230,10,80,70);
-        exit.setBounds(320,10,80,70);
+        id.setBounds(20, 10, 200, 30);
+        pw.setBounds(20, 50, 200, 30);
+        login.setBounds(230, 10, 80, 70);
+        exit.setBounds(320, 10, 80, 70);
 
-        employee.setBounds(20,90,20,20);
-        emp.setBounds(50,90,40,20);
-        member.setBounds(100,90,20,20);
-        mem.setBounds(130,90,40,20);
+        employee.setBounds(20, 90, 20, 20);
+        emp.setBounds(50, 90, 40, 20);
+        member.setBounds(100, 90, 20, 20);
+        mem.setBounds(130, 90, 40, 20);
 
         employee.setSelected(true);
 
@@ -110,12 +123,12 @@ public class GUIViewer implements ActionListener {
         loginmenu.add(pan);
 
         loginmenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        loginmenu.setBounds(100,100,430,170);
+        loginmenu.setBounds(100, 100, 430, 170);
         loginmenu.setVisible(true);
     }
 
     //직원 메뉴
-    void Employee(){
+    void Employee() {
         employeemenu = new JFrame("직원메뉴");
         pan = new JPanel();
         pan.setLayout(null);
@@ -126,10 +139,10 @@ public class GUIViewer implements ActionListener {
         update = new JButton("수정");
         delete = new JButton("삭제");
 
-        inqury.setBounds(0,0,500,100);
-        insert.setBounds(0,100,500,100);
-        update.setBounds(0,200,500,100);
-        delete.setBounds(0,300,500,100);
+        inqury.setBounds(0, 0, 500, 100);
+        insert.setBounds(0, 100, 500, 100);
+        update.setBounds(0, 200, 500, 100);
+        delete.setBounds(0, 300, 500, 100);
 
         inqury.addActionListener(this);
         insert.addActionListener(this);
@@ -144,7 +157,7 @@ public class GUIViewer implements ActionListener {
         employeemenu.add(pan);
 
         employeemenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        employeemenu.setBounds(100,100,500,440);
+        employeemenu.setBounds(100, 100, 500, 440);
         employeemenu.setVisible(true);
     }
 
@@ -153,16 +166,114 @@ public class GUIViewer implements ActionListener {
         membermenu = new JFrame("회원메뉴");
 
         membermenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        membermenu.setBounds(100,100,500,500);
+        membermenu.setBounds(100, 100, 500, 500);
         membermenu.setVisible(true);
     }
 
+    //삽입 메뉴
+    void Insert() {
+        input = new JFrame("상품 삽입!");
 
+        pan = new JPanel();
+        pan.setLayout(null);
+
+        enter = new JButton("추가!");
+        name = new JTextField("상품명");
+        brand = new JTextField("브랜드명");
+        price = new JTextField("가격");
+        volume = new JTextField("용량");
+        code = new JTextField("코드");
+
+        enter.setBounds(300, 70, 150, 350);
+        name.setBounds(30, 70, 250, 50);
+        brand.setBounds(30, 140, 250, 50);
+        price.setBounds(30, 210, 250, 50);
+        volume.setBounds(30, 280, 250, 50);
+        code.setBounds(30, 350, 250, 50);
+
+        pan.add(name);
+        pan.add(enter);
+        pan.add(brand);
+        pan.add(price);
+        pan.add(volume);
+        pan.add(code);
+
+        enter.addActionListener(this);
+
+        input.add(pan);
+
+        input.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        input.setBounds(100, 100, 500, 440);
+        input.setVisible(true);
+
+    }
+    //수정 메뉴
+    void Update() {
+        input = new JFrame("상품 수정!");
+
+        pan = new JPanel();
+        pan.setLayout(null);
+
+        Update = new JButton("수정!");
+        name = new JTextField("상품수정명");
+        brand = new JTextField("브랜드수정명");
+        price = new JTextField("가격수정");
+        volume = new JTextField("용량수정");
+        code = new JTextField("변경하려는 코드명을 정확히입력해주세요");
+
+        Update.setBounds(300, 70, 150, 350);
+        name.setBounds(30, 70, 250, 50);
+        brand.setBounds(30, 140, 250, 50);
+        price.setBounds(30, 210, 250, 50);
+        volume.setBounds(30, 280, 250, 50);
+        code.setBounds(30, 350, 250, 50);
+
+        pan.add(name);
+        pan.add(Update);
+        pan.add(brand);
+        pan.add(price);
+        pan.add(volume);
+        pan.add(code);
+
+        Update.addActionListener(this);
+
+        input.add(pan);
+
+        input.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        input.setBounds(100, 100, 500, 440);
+        input.setVisible(true);
+
+    }
+    //삭제 메뉴
+    void Delete() {
+        input = new JFrame("상품 삭제!");
+
+        pan = new JPanel();
+        pan.setLayout(null);
+
+        Delete = new JButton("삭제!");
+        code = new JTextField("삭제하려는 코드명을 정확히입력해주세요");
+
+        Delete.setBounds(300, 70, 150, 350);
+        code.setBounds(30, 350, 250, 50);
+
+        pan.add(Delete);
+        pan.add(code);
+
+        Delete.addActionListener(this);
+
+        input.add(pan);
+
+        input.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        input.setBounds(100, 100, 500, 440);
+        input.setVisible(true);
+
+    }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == login){
+        if (e.getSource() == login) {
             System.out.println("로그인 버튼 누름!");
 
             //로그인 처리 하기(컨트롤러)
@@ -171,107 +282,90 @@ public class GUIViewer implements ActionListener {
             //login창 숨김
             //employee창 띄움
             //로그인 실패시 다이얼로그 띄움
-            if(member.isSelected()){
-                dto = new AuthDTO(id.getText(), pw.getText());
+            if (member.isSelected()) {
+                adto = new AuthDTO(id.getText(), pw.getText());
 
-                r = controller.SubControllerEX("AUTH", 1, dto);
-                if(r){
+                r = controller.SubControllerEX("AUTH", 1, adto);
+                if (r) {
                     loginmenu.setVisible(false);
                     Member();
-                }else {
+                } else {
                     JOptionPane.showMessageDialog(null, "로그인실패");
                 }
             } else if (employee.isSelected()) {
-                dto = new AuthDTO(id.getText(), pw.getText());
+                adto = new AuthDTO(id.getText(), pw.getText());
 
-                r = controller.SubControllerEX("AUTH", 2, dto);
-                if(r){
+                r = controller.SubControllerEX("AUTH", 2, adto);
+                if (r) {
                     loginmenu.setVisible(false);
                     Employee();
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(null, "로그인실패");
                 }
             }
         }
-        if(e.getSource() == inqury){
+        if (e.getSource() == inqury) {
             System.out.println("조회 요청!");
             dao.Inqury(pdto);
         }
-        if(e.getSource() == insert){
+        if (e.getSource() == insert) {
             System.out.println("삽입 요청!");
-
-            input = new JFrame("상품 삽입!");
-
-            pan = new JPanel();
-            pan.setLayout(null);
-
-            enter = new JButton("추가!");
-            name = new JTextField("상품명");
-            brand = new JTextField("브랜드명");
-            price = new JTextField("가격");
-            volume = new JTextField("용량");
-            code = new JTextField("코드");
-
-            enter.setBounds(300,70,150,350);
-            name.setBounds(30,70,250,50);
-            brand.setBounds(30,140,250,50);
-            price.setBounds(30,210,250,50);
-            volume.setBounds(30,280,250,50);
-            code.setBounds(30,350,250,50);
-
-            pan.add(name);
-            pan.add(enter);
-            pan.add(brand);
-            pan.add(price);
-            pan.add(volume);
-            pan.add(code);
-
-            input.add(pan);
-
-            input.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            input.setBounds(100,100,500,440);
-            input.setVisible(true);
-
-            boolean result = controller.SubControllerEX("COSMETIC", 2, pdto);
-            //cosmetic선택 2번메뉴 삽입 , 저장된 상품정보
-            if (result) //만약 result 가 성공했다면
-                System.out.println("INSERT성공");
-            else
-                System.out.println("INSERT실패");
+            Insert();
         }
-        if(e.getSource() == update){
-//            System.out.println("상품수정요청!");
-//            System.out.print("새로운 상품명 : ");
-//            name = sc.next();
-//            System.out.print("새로운 브랜드명 : ");
-//            brand = sc.next();
-//            System.out.print("새로운 가격 : ");
-//            price = sc.nextInt();
-//            System.out.print("새로운 용량 : ");
-//            volume = sc.next();
-//            System.out.print("수정 코드 : ");
-//            code = sc.nextInt();
-//            ProductDTO dto2 = new ProductDTO(name, brand, price, volume, code);
-//
-//            boolean result2 = controller.SubControllerEX("COSMETIC", 3, dto2);
-//
-//            if (result2) {//만약 result2가 성공했다면
-//                System.out.println("Update 성공!");
-//                dao.Inqury(dto);
-//            } else {
-//                System.out.println("Update 실패!");
-//            }
-        }
-        if(e.getSource() == delete){
+        if(e.getSource() == enter){
+            System.out.println("삽입버튼누름!!!");
+            pdto = new ProductDTO(name.getText(),brand.getText(),price.getText(),volume.getText(),code.getText());
 
-//            boolean result3 = controller.SubControllerEX("COSMETIC", 4, deletedto);
-//            if (result3) { //만약 삭제성공했다면
-//                System.out.println("DELETE 성공!");
-//            } else {
-//                System.out.println("DELTET 실패!");
-//            }
+            r = controller.SubControllerEX("COSMETIC", 2, pdto);
+            if(r){
+                input.setVisible(false);
+                employeemenu.setVisible(true);
+                Employee();
+                dao.Inqury(pdto);
+            }else{
+                JOptionPane.showMessageDialog(null, "상품삽입실패!");
+            }
         }
-        if(e.getSource() == exit){
+
+        if (e.getSource() == update) {
+            System.out.println("수정 요청!");
+            Update();
+        }
+        if (e.getSource() == Update){
+            System.out.println("수정버튼누름!!!!");
+            pdto = new ProductDTO(name.getText(),brand.getText(),price.getText(),volume.getText(),code.getText());
+
+            r = controller.SubControllerEX("COSMETIC", 3, pdto);
+            if(r){
+                input.setVisible(false);
+                employeemenu.setVisible(true);
+                Employee();
+                dao.Inqury(pdto);
+            }else{
+                JOptionPane.showMessageDialog(null, "수정실패!");
+            }
+        }
+        if (e.getSource() == delete) {
+            System.out.println("삭제 요청!");
+            dao.Inqury(pdto);
+            Delete();
+        }
+        if (e.getSource() == Delete){
+            System.out.println("삭제버튼누름!!");
+
+            pdto = new ProductDTO(code.getText());
+
+            r = controller.SubControllerEX("COSMETIC", 4, pdto);
+            if(r){
+                input.setVisible(false);
+                employeemenu.setVisible(true);
+                Employee();
+                dao.Inqury(pdto);
+            }else{
+                JOptionPane.showMessageDialog(null, "삭제실패!");
+            }
+        }
+        if (e.getSource() == exit) {
             System.out.println("종료 버튼 누름!");
             System.exit(-1);
         }

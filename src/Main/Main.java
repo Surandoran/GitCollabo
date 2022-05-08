@@ -23,7 +23,6 @@ public class Main {
 //		dao.Inqury(dto);	//조회
 //		dao.Update(dto);	//수정
 //		dao.Delete(dto);	//삭제
-		Viewer view = new Viewer();
 //		view.product();
 //		view.LoginMenu();
 		new GUIViewer();

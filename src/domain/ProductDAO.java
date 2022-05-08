@@ -21,8 +21,8 @@ public class ProductDAO extends DAO {
 
             while (rs.next()) {
                 System.out.println(
-                        rs.getString("name") + "\t" + rs.getString("brand") + "\t" + rs.getInt("price")
-                                + "\t" + rs.getString("volume") + "\t" + rs.getInt("code")
+                        rs.getString("name") + "\t" + rs.getString("brand") + "\t" + rs.getString("price")
+                                + "\t" + rs.getString("volume") + "\t" + rs.getString("code")
                 );
 
             }
@@ -46,9 +46,9 @@ public class ProductDAO extends DAO {
             pstmt = conn.prepareStatement("insert into product_tbl values(?,?,?,?,?)");
             pstmt.setString(1, dto.getName());
             pstmt.setString(2, dto.getBrand());
-            pstmt.setInt(3, dto.getPrice());
+            pstmt.setString(3, dto.getPrice());
             pstmt.setString(4, dto.getVolume());
-            pstmt.setInt(5, dto.getCode());
+            pstmt.setString(5, dto.getCode());
 
             result = pstmt.executeUpdate();
 
@@ -74,9 +74,9 @@ public class ProductDAO extends DAO {
             pstmt = conn.prepareStatement("update product_Tbl set name=?,brand=?,price=?,volume=? where code=?");
             pstmt.setString(1, dto.getName());
             pstmt.setString(2, dto.getBrand());
-            pstmt.setInt(3, dto.getPrice());
+            pstmt.setString(3, dto.getPrice());
             pstmt.setString(4, dto.getVolume());
-            pstmt.setInt(5, dto.getCode());
+            pstmt.setString(5, dto.getCode());
 
             //SQL전송
             result = pstmt.executeUpdate();
@@ -103,7 +103,7 @@ public class ProductDAO extends DAO {
         try {
             //SQL전송객체 생성
             pstmt = conn.prepareStatement("delete from product_tbl where code=?");
-            pstmt.setInt(1, dto.getCode());
+            pstmt.setString(1, dto.getCode());
 
             //SQL 전송
             result = pstmt.executeUpdate();
@@ -120,6 +120,7 @@ public class ProductDAO extends DAO {
         return false;
 
     }
+
 
 
 }

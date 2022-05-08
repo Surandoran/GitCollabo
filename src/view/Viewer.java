@@ -15,9 +15,9 @@ public class Viewer {
     Scanner sc = new Scanner(System.in);
     String name;    //상품이름
     String brand;   //상품브랜드
-    int price;      //상품가격
+    String price;      //상품가격
     String volume;  //상품용량
-    int code;       //상품코드
+    String code;       //상품코드
 
     //controller 객체추가
     FrontController controller = new FrontController();
@@ -118,11 +118,11 @@ public class Viewer {
                     System.out.print("브랜드명 : ");
                     brand = sc.next();
                     System.out.print("가격 : ");
-                    price = sc.nextInt();
+                    price = sc.next();
                     System.out.print("용량 : ");
                     volume = sc.next();
                     System.out.print("코드 : ");
-                    code = sc.nextInt();
+                    code = sc.next();
 
                     ProductDTO dto1 = new ProductDTO(name, brand, price, volume, code);
 
@@ -140,11 +140,11 @@ public class Viewer {
                     System.out.print("새로운 브랜드명 : ");
                     brand = sc.next();
                     System.out.print("새로운 가격 : ");
-                    price = sc.nextInt();
+                    price = sc.next();
                     System.out.print("새로운 용량 : ");
                     volume = sc.next();
                     System.out.print("수정 코드 : ");
-                    code = sc.nextInt();
+                    code = sc.next();
                     ProductDTO dto2 = new ProductDTO(name, brand, price, volume, code);
 
                     boolean result2 = controller.SubControllerEX("COSMETIC", 3, dto2);
@@ -159,7 +159,7 @@ public class Viewer {
                 case 4: //상품삭제
                     System.out.println("상품삭제요청!");
                     System.out.print("제거상품코드 : ");
-                    code = sc.nextInt();
+                    code = sc.next();
 
                     ProductDTO dto3 = new ProductDTO(code);
 
