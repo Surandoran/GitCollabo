@@ -252,7 +252,7 @@ GUIViewer implements ActionListener {
         pan.setLayout(null);
 
         Delete = new JButton("삭제!");
-        code = new JTextField("삭제하려는 코드명을 정확히입력해주세요");
+        code = new JTextField("삭제하려는 code명을 정확히입력해주세요");
 
         Delete.setBounds(300, 70, 150, 350);
         code.setBounds(30, 350, 250, 50);
