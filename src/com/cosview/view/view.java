@@ -87,7 +87,7 @@ public class view {
                     int price = sc.nextInt();
                     System.out.print("용량 입력 >>>>");
                     String volume = sc.next();
-                    ProductDTO dto = new ProductDTO(name, brand, price, volume);
+//                    ProductDTO dto = new ProductDTO(name, brand, price, volume);
                     boolean result = controller.SubControllerEX("COSMETIC", 2, dto);
                     if(result) { 
                     	System.out.println("성공");
