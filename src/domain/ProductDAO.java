@@ -115,7 +115,6 @@ public class ProductDAO extends DAO {
             e.printStackTrace();
         } finally {
             try {pstmt.close();} catch (Exception e1) {e1.printStackTrace();}
-            try {conn.close();} catch (Exception e1) {e1.printStackTrace();}
         }
         return false;
 
