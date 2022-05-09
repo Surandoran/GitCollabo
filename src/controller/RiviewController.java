@@ -16,13 +16,13 @@ public class RiviewController implements SubController {
 
         //1: 조회,2: 삽입,3: 수정,4: 삭제
         if (num == 1) {
-            return service.Inqury(rdto);
+            return service.RInqury(rdto);
         } else if (num == 2) {
-            return service.Insert(rdto);
+            return service.RInsert(rdto);
         } else if (num == 3) {
-            return service.Update(rdto);
+            return service.RUpdate(rdto);
         } else if (num == 4) {
-            return service.Delete(rdto);
+            return service.RDelete(rdto);
         }
         return false;
     }

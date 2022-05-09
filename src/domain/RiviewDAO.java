@@ -7,7 +7,7 @@ import domain.DAO;
 public class RiviewDAO extends DAO {
     int result;
 
-    public boolean Inqury(RiviewDTO dto) {    //조회
+    public boolean RInqury(RiviewDTO dto) {    //조회
         try {
             //SQL 전송 객체
             pstmt = conn.prepareStatement("select * from riview_tbl");
@@ -37,7 +37,7 @@ public class RiviewDAO extends DAO {
         return false;
     }
 
-    public boolean Insert(RiviewDTO dto) {    //삽입
+    public boolean RInsert(RiviewDTO dto) {    //삽입
         try {
             pstmt = conn.prepareStatement("insert into riview_tbl values(?,?,?,?)");
             pstmt.setString(1, dto.getName());
@@ -63,7 +63,7 @@ public class RiviewDAO extends DAO {
         return false;
     }
 
-    public boolean Update(RiviewDTO dto) {
+    public boolean RUpdate(RiviewDTO dto) {
         try {
             //SQL전송 객체
             pstmt = conn.prepareStatement("update riview_Tbl set name=?,price=?,volume=?,riview=? where name=?");
@@ -92,7 +92,7 @@ public class RiviewDAO extends DAO {
     }
 
 
-    public boolean Delete(RiviewDTO dto) {
+    public boolean RDelete(RiviewDTO dto) {
         //연결
         try {
             //SQL전송객체 생성

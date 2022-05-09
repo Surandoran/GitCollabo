@@ -5,7 +5,9 @@ import controller.FrontController;
 import cosmeticdto.AuthDTO;
 import cosmeticdto.DTO;
 import cosmeticdto.ProductDTO;
+import cosmeticdto.RiviewDTO;
 import domain.ProductDAO;
+import domain.RiviewDAO;
 import jdk.nashorn.internal.scripts.JO;
 
 import javax.swing.*;
@@ -22,6 +24,8 @@ GUIViewer implements ActionListener {
 
     ProductDAO dao = new ProductDAO();
     ProductDTO pdto;
+    RiviewDAO rdao = new RiviewDAO();
+    RiviewDTO rdto;
 
     //입력창
     JFrame input;//삽입
@@ -35,6 +39,21 @@ GUIViewer implements ActionListener {
     JTextField price;
     JTextField volume;
     JTextField code;
+
+    //리뷰관련
+    JButton riviewS; //조회버튼
+    JButton riviewI; //쓰기버튼
+    JButton riviewU; //수정버튼
+    JButton riviewD; //삭제버튼
+    JButton riviewS1; //조회버튼
+    JButton riviewI1; //쓰기버튼
+    JButton riviewU1; //수정버튼
+    JButton riviewD1; //삭제버튼
+    JButton riviewS2; //조회버튼
+    JButton riviewI2; //쓰기버튼
+    JButton riviewU2; //수정버튼
+    JButton riviewD2; //삭제버튼
+    JTextField riview; //쓰는공간
 
     //로그인 창 관련
     JFrame loginmenu;
@@ -157,10 +176,126 @@ GUIViewer implements ActionListener {
     //회원 메뉴
     void Member() {
         membermenu = new JFrame("회원메뉴");
+        pan = new JPanel();
+        pan.setLayout(null);
+
+
+        riviewS = new JButton("리뷰조회");
+        riviewI = new JButton("리뷰쓰기");
+        riviewU = new JButton("리뷰수정");
+        riviewD = new JButton("리뷰삭제");
+
+        riviewS.setBounds(0, 0, 500, 100);
+        riviewI.setBounds(0, 100, 500, 100);
+        riviewU.setBounds(0, 200, 500, 100);
+        riviewD.setBounds(0, 300, 500, 100);
+
+        riviewS.addActionListener(this);
+        riviewI.addActionListener(this);
+        riviewU.addActionListener(this);
+        riviewD.addActionListener(this);
+
+        pan.add(riviewS);
+        pan.add(riviewI);
+        pan.add(riviewU);
+        pan.add(riviewD);
+
+        membermenu.add(pan);
 
         membermenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        membermenu.setBounds(100, 100, 500, 500);
+        membermenu.setBounds(100, 100, 500, 440);
         membermenu.setVisible(true);
+    }
+
+    void riviewInsert() {
+        input = new JFrame("리뷰");
+
+        pan = new JPanel();
+        pan.setLayout(null);
+
+        riviewI1 = new JButton("등록");
+        name = new JTextField("상품명");
+        price = new JTextField("가격");
+        volume = new JTextField("용량");
+        riview = new JTextField("리뷰");
+
+        riviewI1.setBounds(410,30,60,30);
+        name.setBounds(30,30,120,30);
+        price.setBounds(160,30,120,30);
+        volume.setBounds(290,30,120,30);
+        riview.setBounds(30,70,400,400);
+
+        pan.add(name);
+        pan.add(riviewI1);
+        pan.add(price);
+        pan.add(volume);
+        pan.add(riview);
+
+        riviewI1.addActionListener(this);
+
+        input.add(pan);
+
+        input.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        input.setBounds(100, 100, 500, 440);
+        input.setVisible(true);
+    }
+
+    void riviewDelete() {
+        input = new JFrame("리뷰 삭제!");
+
+        pan = new JPanel();
+        pan.setLayout(null);
+
+        riviewD1 = new JButton("리뷰삭제!");
+        name = new JTextField("삭제하려는 상품명을 정확히입력해주세요");
+
+        riviewD1.setBounds(300, 70, 150, 350);
+        name.setBounds(30, 350, 250, 50);
+
+        pan.add(riviewD1);
+        pan.add(name);
+
+        riviewD1.addActionListener(this);
+
+        input.add(pan);
+
+        input.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        input.setBounds(100, 100, 500, 440);
+        input.setVisible(true);
+
+    }
+
+    void riviewUpdate(){
+        input = new JFrame("리뷰 수정!");
+
+        pan = new JPanel();
+        pan.setLayout(null);
+
+        riviewU1 = new JButton("수정!");
+        name = new JTextField("상품명");
+        price = new JTextField("가격");
+        volume = new JTextField("용량");
+        riview = new JTextField("리뷰");
+
+        riviewU1.setBounds(400,40,90,50);
+        name.setBounds(30,30,50,30);
+        price.setBounds(80,30,50,30);
+        volume.setBounds(130,30,50,30);
+        riview.setBounds(30,70,400,400);
+
+        pan.add(name);
+        pan.add(riviewU1);
+        pan.add(price);
+        pan.add(volume);
+        pan.add(riview);
+
+        riviewU1.addActionListener(this);
+
+        input.add(pan);
+
+        input.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        input.setBounds(100, 100, 500, 440);
+        input.setVisible(true);
     }
 
     //삽입 메뉴
@@ -200,6 +335,7 @@ GUIViewer implements ActionListener {
         input.setVisible(true);
 
     }
+
     //수정 메뉴
     void Update() {
         input = new JFrame("상품 수정!");
@@ -237,6 +373,7 @@ GUIViewer implements ActionListener {
         input.setVisible(true);
 
     }
+
     //삭제 메뉴
     void Delete() {
         input = new JFrame("상품 삭제!");
@@ -305,36 +442,35 @@ GUIViewer implements ActionListener {
             System.out.println("삽입 요청!");
             Insert();
         }
-        if(e.getSource() == enter){
+        if (e.getSource() == enter) {
             System.out.println("삽입버튼누름!!!");
-            pdto = new ProductDTO(name.getText(),brand.getText(),price.getText(),volume.getText(),code.getText());
+            pdto = new ProductDTO(name.getText(), brand.getText(), price.getText(), volume.getText(), code.getText());
 
             r = controller.SubControllerEX("COSMETIC", 2, pdto);
-            if(r){
+            if (r) {
                 input.setVisible(false);
                 employeemenu.setVisible(true);
                 Employee();
                 dao.Inqury(pdto);
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "상품삽입실패!");
             }
         }
-
         if (e.getSource() == update) {
             System.out.println("수정 요청!");
             Update();
         }
-        if (e.getSource() == Update){
+        if (e.getSource() == Update) {
             System.out.println("수정버튼누름!!!!");
-            pdto = new ProductDTO(name.getText(),brand.getText(),price.getText(),volume.getText(),code.getText());
+            pdto = new ProductDTO(name.getText(), brand.getText(), price.getText(), volume.getText(), code.getText());
 
             r = controller.SubControllerEX("COSMETIC", 3, pdto);
-            if(r){
+            if (r) {
                 input.setVisible(false);
                 employeemenu.setVisible(true);
                 Employee();
                 dao.Inqury(pdto);
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "수정실패!");
             }
         }
@@ -343,19 +479,79 @@ GUIViewer implements ActionListener {
             dao.Inqury(pdto);
             Delete();
         }
-        if (e.getSource() == Delete){
+        if (e.getSource() == Delete) {
             System.out.println("삭제버튼누름!!");
 
             pdto = new ProductDTO(code.getText());
 
             r = controller.SubControllerEX("COSMETIC", 4, pdto);
-            if(r){
+            if (r) {
                 System.out.println("삭제 성공!");
                 input.setVisible(false);
                 employeemenu.setVisible(true);
                 Employee();
                 dao.Inqury(pdto);
-            }else{
+            } else {
+                JOptionPane.showMessageDialog(null, "삭제실패!");
+            }
+        }
+        if (e.getSource() == exit) {
+            System.out.println("종료 버튼 누름!");
+            System.exit(-1);
+        }
+        if (e.getSource() == riviewS) {
+            System.out.println("조회 요청!");
+            rdao.RInqury(rdto);
+        }
+        if (e.getSource() == riviewI) {
+            riviewInsert();
+        }
+        if (e.getSource() == riviewI1) {
+
+            rdto = new RiviewDTO(name.getText(), price.getText(), volume.getText(), riview.getText());
+
+            r = controller.SubControllerEX("RIVIEW", 2, rdto);
+            if (r) {
+                    input.setVisible(false);
+                    membermenu.setVisible(true);
+                    Member();
+            } else {
+                JOptionPane.showMessageDialog(null, "리뷰쓰기실패");
+            }
+        }
+
+        if (e.getSource() == riviewU) {
+            System.out.println("수정 요청!");
+            riviewUpdate();
+        }
+        if (e.getSource() == riviewU1) {
+            System.out.println("상품명을 정확히 입력해주세요!");
+            rdto = new RiviewDTO(name.getText(), price.getText(), volume.getText(), riview.getText());
+
+            r = controller.SubControllerEX("RIVIEW", 3, rdto);
+            if (r) {
+                input.setVisible(false);
+                membermenu.setVisible(true);
+                Member();
+            } else {
+                JOptionPane.showMessageDialog(null, "수정실패!");
+            }
+        }
+        if (e.getSource() == riviewD) {
+            System.out.println("삭제 요청!");
+            riviewDelete();
+        }
+        if (e.getSource() == riviewD1) {
+
+            rdto = new RiviewDTO(name.getText());
+
+            r = controller.SubControllerEX("RIVIEW", 4, rdto);
+            if (r) {
+                System.out.println("삭제 성공!");
+                input.setVisible(false);
+                membermenu.setVisible(true);
+                Member();
+            } else {
                 JOptionPane.showMessageDialog(null, "삭제실패!");
             }
         }
@@ -365,3 +561,4 @@ GUIViewer implements ActionListener {
         }
     }
 }
+

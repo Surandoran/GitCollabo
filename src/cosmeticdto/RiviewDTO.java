@@ -12,6 +12,9 @@ public class RiviewDTO extends DTO{
         this.volume = volume;
         this.riview = riview;
     }
+    public RiviewDTO(String name){
+        this.name = name;
+    }
 
     public String getName() {
         return name;

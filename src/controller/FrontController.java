@@ -18,6 +18,7 @@ public class FrontController {
     private void Init() {
         map.put("COSMETIC", new ProduntController());
         map.put("AUTH", new AuthController());
+        map.put("RIVIEW", new RiviewController());
     }
 
     //MAP에 있는 서브컨트롤러를 꺼내어 실행하는 함수
@@ -31,6 +32,9 @@ public class FrontController {
             tmp = map.get("AUTH"); //AuthController를 꺼내어 tmp에 연결
             return tmp.execute(num, dto); //SubController execute실행 결과(true/false)를 view로 전달
                                           //num == 1 회원로그인 / num == 2 직원로그인
+        } else if (menu.equals("RIVIEW")) {
+            tmp = map.get("RIVIEW");
+            return tmp.execute(num, dto);
         }
         return false;
     }
