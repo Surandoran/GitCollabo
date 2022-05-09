@@ -28,7 +28,7 @@ import com.cosview.view.MemberView;
 import com.cosview.view.SignUpview;
 import com.cosview.view.view;
 
-public class Main extends JFrame implements ActionListener, KeyListener,MouseListener{
+public class Main extends JFrame implements ActionListener{
    JPanel p1;
    JButton btn1, btn2;
    JTextField txt1, txt2;
@@ -118,8 +118,7 @@ public class Main extends JFrame implements ActionListener, KeyListener,MouseLis
       employee.setSelected(true);
       btn1.addActionListener(this);
       btn2.addActionListener(this);
-      txt1.addMouseListener(this);
-      
+
       setVisible(true);
    }
    
@@ -133,7 +132,7 @@ public class Main extends JFrame implements ActionListener, KeyListener,MouseLis
 //      v.LoginMenu();
 
       new Main();  
-     
+   
    }
 
    @Override
@@ -167,69 +166,6 @@ public class Main extends JFrame implements ActionListener, KeyListener,MouseLis
       }
       
    }
-
-
-private void Employee() {
-	// TODO Auto-generated method stub
-	
 }
 
 
-@Override
-public void keyTyped(KeyEvent e) {
-	// TODO Auto-generated method stub
-	
-}
-
-
-@Override
-public void keyPressed(KeyEvent e) {
-	
-	
-}
-
-
-@Override
-public void keyReleased(KeyEvent e) {
-	// TODO Auto-generated method stub
-	
-}
-
-
-@Override
-public void mouseClicked(MouseEvent e) {
-	if(e.getSource() == txt1) {
-	  	  System.out.println("aa");
-	  	  txt1.setText("");
-	    }
-	
-}
-
-
-@Override
-public void mousePressed(MouseEvent e) {
-	// TODO Auto-generated method stub
-	
-}
-
-
-@Override
-public void mouseReleased(MouseEvent e) {
-	// TODO Auto-generated method stub
-	
-}
-
-
-@Override
-public void mouseEntered(MouseEvent e) {
-	// TODO Auto-generated method stub
-	
-}
-
-
-@Override
-public void mouseExited(MouseEvent e) {
-	// TODO Auto-generated method stub
-	
-}
-}

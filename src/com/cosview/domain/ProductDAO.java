@@ -18,7 +18,7 @@ public class ProductDAO extends DAO{
 	private String driver="com.mysql.cj.jdbc.Driver";
 	private String url="jdbc:mysql://localhost:3306/cosmeticdb";
 	private String id="root";
-	private String pw="1234";
+	private String pw="lmh49092";
 	
 	//연결객체정보
 	private PreparedStatement pstmt = null;
