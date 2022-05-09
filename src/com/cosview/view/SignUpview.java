@@ -7,6 +7,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -120,10 +121,16 @@ public class SignUpview extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == SignUpBtn) {
-			MemberDTO dto = new MemberDTO(IDtxt.getText(), PWtxt.getText(), nametxt.getText(), emailtxt.getText(), nicktxt.getText(), addrtxt.getText());
-			AuthDAO dao = new AuthDAO();
-			dao.MemberInsert(dto);
-			setVisible(false);
+			if (nametxt.getText() == "") {
+				System.out.println(nametxt.getText());
+				JOptionPane.showMessageDialog(null, "빈칸을 입력해주세요.");
+			}else {
+				System.out.println(nametxt.getText());
+				MemberDTO dto = new MemberDTO(IDtxt.getText(), PWtxt.getText(), nametxt.getText(), emailtxt.getText(), nicktxt.getText(), addrtxt.getText());
+				AuthDAO dao = new AuthDAO();
+				dao.MemberInsert(dto);
+				setVisible(false);
+			}
 		}
 		if(e.getSource() == back) {
 			setVisible(false);

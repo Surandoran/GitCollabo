@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.cosview.dto.ProductDTO;
+import com.cosview.view.EmployeeView;
 import com.cosview.view.MemberView;
 
 public class ProductDAO extends DAO{
@@ -18,7 +19,7 @@ public class ProductDAO extends DAO{
 	private String driver="com.mysql.cj.jdbc.Driver";
 	private String url="jdbc:mysql://localhost:3306/cosmeticdb";
 	private String id="root";
-	private String pw="lmh49092";
+	private String pw="1234";
 	
 	//연결객체정보
 	private PreparedStatement pstmt = null;
@@ -45,6 +46,8 @@ public class ProductDAO extends DAO{
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				EmployeeView.area.append(rs.getString("name") + " " + rs.getString("brand") + " "
+						+ rs.getString("price") + " " + rs.getString("volume")+ rs.getString("Code")+ "\n");
 				MemberView.area.append(rs.getString("name") + " " + rs.getString("brand") + " "
 						+ rs.getString("price") + " " + rs.getString("volume")+ rs.getString("Code")+ "\n");
 				System.out.println(rs.getString("name") + " " + rs.getString("brand") + " "

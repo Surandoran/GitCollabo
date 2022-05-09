@@ -48,12 +48,12 @@ public class Main extends JFrame implements ActionListener{
       Font font1 = new Font("Serif", Font.ITALIC, 17);
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       
-      icon = new ImageIcon("../image/cos.png");
+      icon = new ImageIcon("image/cos.png");
       
       p1 = new JPanel();
       p1.setBackground(Color.black);
       p1.setLayout(null);
-      txt1 = new JTextField("아이디를 입력하세요");
+      txt1 = new JTextField();
       txt2 = new JTextField();
       btn1 = new JButton("Login");
       btn1.setFont(font);
@@ -148,7 +148,7 @@ public class Main extends JFrame implements ActionListener{
               System.out.println("로그인 실패");
               JOptionPane.showMessageDialog(null, "ID PW 다릅니다.");
            }
-      }else if(employee.isSelected()&&e.getSource()==btn1) {
+      }else if(employee.isSelected() && e.getSource()==btn1) {
          AuthDTO dto = new  AuthDTO(txt1.getText(), txt2.getText());
            boolean r1 = controller.SubControllerEX("AUTH", 2, dto);
            if(r1) {
