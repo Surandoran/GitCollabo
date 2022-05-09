@@ -1,28 +1,24 @@
 package domain;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.Scanner;
+import cosmeticdto.DTO;
+import cosmeticdto.RiviewDTO;
+import domain.DAO;
 
-import cosmeticdto.ProductDTO;
-
-public class ProductDAO extends DAO {
+public class RiviewDAO extends DAO {
     int result;
 
-    public boolean Inqury(ProductDTO dto) {    //조회
+    public boolean Inqury(RiviewDTO dto) {    //조회
         try {
             //SQL 전송 객체
-            pstmt = conn.prepareStatement("select * from product_tbl");
+            pstmt = conn.prepareStatement("select * from riview_tbl");
 
             //SQL 실행
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
                 System.out.println(
-                        rs.getString("name") + "\t" + rs.getString("brand") + "\t" + rs.getString("price")
-                                + "\t" + rs.getString("volume") + "\t" + rs.getString("code")
+                        rs.getString("name") + "\t" + rs.getString("price") + "\t" + rs.getString("volume") + "\t" + rs.getString("riview"
+                        )
                 );
 
             }
@@ -40,15 +36,14 @@ public class ProductDAO extends DAO {
         }
         return false;
     }
-//test
-    public boolean Insert(ProductDTO dto) {    //삽입
+
+    public boolean Insert(RiviewDTO dto) {    //삽입
         try {
-            pstmt = conn.prepareStatement("insert into product_tbl values(?,?,?,?,?)");
+            pstmt = conn.prepareStatement("insert into riview_tbl values(?,?,?,?)");
             pstmt.setString(1, dto.getName());
-            pstmt.setString(2, dto.getBrand());
-            pstmt.setString(3, dto.getPrice());
-            pstmt.setString(4, dto.getVolume());
-            pstmt.setString(5, dto.getCode());
+            pstmt.setString(2, dto.getPrice());
+            pstmt.setString(3, dto.getVolume());
+            pstmt.setString(4, dto.getRiview());
 
             result = pstmt.executeUpdate();
 
@@ -68,15 +63,14 @@ public class ProductDAO extends DAO {
         return false;
     }
 
-    public boolean Update(ProductDTO dto) {
+    public boolean Update(RiviewDTO dto) {
         try {
             //SQL전송 객체
-            pstmt = conn.prepareStatement("update product_Tbl set name=?,brand=?,price=?,volume=? where code=?");
+            pstmt = conn.prepareStatement("update riview_Tbl set name=?,price=?,volume=?,riview=? where name=?");
             pstmt.setString(1, dto.getName());
-            pstmt.setString(2, dto.getBrand());
-            pstmt.setString(3, dto.getPrice());
-            pstmt.setString(4, dto.getVolume());
-            pstmt.setString(5, dto.getCode());
+            pstmt.setString(2, dto.getPrice());
+            pstmt.setString(3, dto.getVolume());
+            pstmt.setString(4, dto.getRiview());
 
             //SQL전송
             result = pstmt.executeUpdate();
@@ -98,12 +92,12 @@ public class ProductDAO extends DAO {
     }
 
 
-    public boolean Delete(ProductDTO dto) {
+    public boolean Delete(RiviewDTO dto) {
         //연결
         try {
             //SQL전송객체 생성
-            pstmt = conn.prepareStatement("delete from product_tbl where code=?");
-            pstmt.setString(1, dto.getCode());
+            pstmt = conn.prepareStatement("delete from riview_tbl where name=?");
+            pstmt.setString(1, dto.getName());
 
             //SQL 전송
             result = pstmt.executeUpdate();
@@ -119,7 +113,5 @@ public class ProductDAO extends DAO {
         return false;
 
     }
-
-
 
 }

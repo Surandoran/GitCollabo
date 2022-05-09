@@ -1,72 +1,64 @@
 package cosmeticdto;
 
-public class ProductDTO extends DTO{
- private String name;
- private String brand;
- private int price;
- private String volume;
+import javax.swing.*;
 
- 
- //생성자
- public ProductDTO(String name, String brand, int price, String volume) {
-		super();
-		this.name = name;
-		this.brand = brand;
-		this.price = price;
-		this.volume = volume;
-	}
+public class ProductDTO extends DTO {
+    private String name;
+    private String brand;
+    private String price;
+    private String volume;
+    private String code;
 
-
-
- 
- //Getter and Setter
- public String getname() {
-		return name;
-	}
+    public ProductDTO(String name, String brand, String price, String volume, String code) {
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+        this.volume = volume;
+        this.code = code;
+    }
+    public ProductDTO(String code){
+        this.code = code;
+    }
 
 
-	public void setname(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getbrand() {
-		return brand;
-	}
+    public String getBrand() {
+        return brand;
+    }
 
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
 
-	public void setbrand(String brand) {
-		this.brand = brand;
-	}
+    public String getPrice() {
+        return price;
+    }
 
+    public void setPrice(String price) {
+        this.price = price;
+    }
 
-	public int getprice() {
-		return price;
-	}
+    public String getVolume() {
+        return volume;
+    }
 
+    public void setVolume(String volume) {
+        this.volume = volume;
+    }
 
-	public void setprice(int price) {
-		this.price = price;
-	}
+    public String getCode() {
+        return code;
+    }
 
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-	public String getvolume() {
-		return volume;
-	}
-
-
-	public void setvolume(String volume) {
-		this.volume = volume;				
-	}
-
-
-	//toString()
-
-	@Override
-	public String toString() {
-		return "ProductDTO [name=" + name + ", brand=" + brand + ", price=" + price + ", volume=" + volume + "]";
-	}
-	
-	
-	
 }

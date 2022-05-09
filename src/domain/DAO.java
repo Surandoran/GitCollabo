@@ -11,8 +11,8 @@ public class DAO {
     //연결관련 정보 저장용 변수
     String driver = "com.mysql.cj.jdbc.Driver";
     String id = "root";
-    String pw = "9764wjdgml1!";
-    String url = "jdbc:mysql://localhost:3306/productdb";
+    String pw = "1234";
+    String url = "jdbc:mysql://localhost:3310/productdb";
     //DB연결관련 객체를 참조 변수
     Connection conn = null;             // DB 연결객체
     PreparedStatement pstmt = null;     // SQL 쿼리 전송 객체
