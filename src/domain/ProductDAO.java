@@ -49,7 +49,7 @@ public class ProductDAO extends DAO {
             pstmt.setString(3, dto.getPrice());
             pstmt.setString(4, dto.getVolume());
             pstmt.setString(5, dto.getCode());
-
+//test
             result = pstmt.executeUpdate();
 
             if (result != 0) {
