@@ -9,9 +9,9 @@ public class DAO {
 	
 	//연결정보
 		String driver="com.mysql.cj.jdbc.Driver";
-		String url="jdbc:mysql://localhost:3306/cosmeticdb";
+		String url="jdbc:mysql://localhost:3310/cosmeticdb";
 		String id="root";
-		String pw="lmh49092";
+		String pw="1234";
 		
 
 		//연결객체정보

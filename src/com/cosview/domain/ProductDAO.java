@@ -11,7 +11,7 @@ public class ProductDAO {
 
 	//연결정보
 	private String driver="com.mysql.cj.jdbc.Driver";
-	private String url="jdbc:mysql://localhost:3306/cosmeticdb";
+	private String url="jdbc:mysql://localhost:3310/cosmeticdb";
 	private String id="root";
 	private String pw="1234";
 	
@@ -49,10 +49,10 @@ public class ProductDAO {
 	public boolean Insert(ProductDTO dto) {
 		try {
 			pstmt = conn.prepareStatement("insert into product_tbl values(?,?,?,?)");
-			pstmt.setString(1, dto.getname());
-			pstmt.setString(2, dto.getbrand());
-			pstmt.setInt(3, dto.getprice());
-			pstmt.setString(4, dto.getvolume());
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getBrand());
+			pstmt.setString(3, dto.getPrice());
+			pstmt.setString(4, dto.getVolume());
 			
 			int result = pstmt.executeUpdate();
 			

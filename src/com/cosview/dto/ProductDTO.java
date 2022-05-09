@@ -1,76 +1,76 @@
 package com.cosview.dto;
 
-public class ProductDTO extends DTO{
- private String name;
- private String brand;
- private String price;
- private String volume;
- private String code;
+public class ProductDTO extends DTO {
+    private String name;
+    private String brand;
+    private String price;
+    private String volume;
+    private String code;
 
- 
- 
+    public ProductDTO(String name, String brand, String price, String volume) {
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+        this.volume = volume;
+    }
 
-
- public ProductDTO(String name, String brand, String price, String volume, String code) {
-	super();
-	this.name = name;
-	this.brand = brand;
-	this.price = price;
-	this.volume = volume;
-	this.code = code;
-}
-
-public String getName() {
-	return name;
-}
-
-public void setName(String name) {
-	this.name = name;
-}
-
-public String getBrand() {
-	return brand;
-}
-
-public void setBrand(String brand) {
-	this.brand = brand;
-}
-
-public String getPrice() {
-	return price;
-}
-
-public void setPrice(String price) {
-	this.price = price;
-}
+    public ProductDTO(String name, String brand, String price, String volume, String code) {
+        super();
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+        this.volume = volume;
+        this.code = code;
+    }
 
 
-public String getVolume() {
-	return volume;
-}
+    public String getName() {
+        return name;
+    }
 
-public void setVolume(String volume) {
-	this.volume = volume;
-}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-public String getCode() {
-	return code;
-}
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
 
 
-public void setCode(String code) {
-	this.code = code;
-}
+    public String getVolume() {
+        return volume;
+    }
 
-@Override
-public String toString() {
-	return "ProductDTO [name=" + name + ", brand=" + brand + ", price=" + price + ", volume=" + volume + ", code="
-			+ code + "]";
-}
+    public void setVolume(String volume) {
+        this.volume = volume;
+    }
+
+    public String getCode() {
+        return code;
+    }
 
 
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-	
-	
-	
+    @Override
+    public String toString() {
+        return "ProductDTO [name=" + name + ", brand=" + brand + ", price=" + price + ", volume=" + volume + ", code="
+                + code + "]";
+    }
+
+
 }

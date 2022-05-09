@@ -68,7 +68,7 @@ public class Viewer {
 				System.out.println("브랜드명 :");
 				String brand = sc.next();
 				System.out.println("가격 :");
-				int price = sc.nextInt();
+				String price = sc.next();
 				System.out.println("용량 :");
 				String volume = sc.next();
 				ProductDTO dto = new ProductDTO(name, brand, price, volume);
