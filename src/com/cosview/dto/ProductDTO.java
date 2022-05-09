@@ -1,6 +1,6 @@
 package com.cosview.dto;
 
-public class ProductDTO {
+public class ProductDTO extends DTO{
  private String name;
  private String brand;
  private int price;
@@ -17,8 +17,6 @@ public class ProductDTO {
 	}
 
 
-
- 
  //Getter and Setter
  public String getname() {
 		return name;

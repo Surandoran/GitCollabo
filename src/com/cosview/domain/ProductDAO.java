@@ -4,16 +4,21 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import com.cosview.dto.ProductDTO;
+import com.cosview.view.MemberView;
 
-public class ProductDAO {
-
+public class ProductDAO extends DAO{
+	
+		
+	
+	
 	//연결정보
 	private String driver="com.mysql.cj.jdbc.Driver";
 	private String url="jdbc:mysql://localhost:3306/cosmeticdb";
 	private String id="root";
-	private String pw="1234";
+	private String pw="lmh49092";
 	
 	//연결객체정보
 	private PreparedStatement pstmt = null;
@@ -31,6 +36,37 @@ public class ProductDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public boolean Select(ProductDTO dto) {
+		try {
+			
+			pstmt =conn.prepareStatement("select * from product_tbl");
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MemberView.area.append(rs.getString("name") + " " + rs.getString("brand") + " "
+						+ rs.getInt("price") + " " + rs.getString("volume")+"\n");
+				System.out.println(rs.getString("name") + " " + rs.getString("brand") + " "
+						+ rs.getInt("price") + " " + rs.getString("volume"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+	
 	
 	
 	public boolean Insert(ProductDTO dto) {
