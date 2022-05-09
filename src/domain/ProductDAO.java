@@ -24,7 +24,7 @@ public class ProductDAO extends DAO {
                         rs.getString("name") + "\t" + rs.getString("brand") + "\t" + rs.getString("price")
                                 + "\t" + rs.getString("volume") + "\t" + rs.getString("code")
                 );
-
+//test
             }
             if (result != 0) {
                 return true;
