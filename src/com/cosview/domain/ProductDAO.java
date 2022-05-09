@@ -46,7 +46,7 @@ public class ProductDAO extends DAO{
 			
 			while(rs.next()) {
 				MemberView.area.append(rs.getString("name") + " " + rs.getString("brand") + " "
-						+ rs.getInt("price") + " " + rs.getString("volume")+"\n");
+						+ rs.getString("price") + " " + rs.getString("volume")+ rs.getString("Code")+ "\n");
 				System.out.println(rs.getString("name") + " " + rs.getString("brand") + " "
 						+ rs.getInt("price") + " " + rs.getString("volume"));
 			}
@@ -72,10 +72,11 @@ public class ProductDAO extends DAO{
 	public boolean Insert(ProductDTO dto) {
 		try {
 			pstmt = conn.prepareStatement("insert into product_tbl values(?,?,?,?)");
-			pstmt.setString(1, dto.getname());
-			pstmt.setString(2, dto.getbrand());
-			pstmt.setInt(3, dto.getprice());
-			pstmt.setString(4, dto.getvolume());
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getBrand());
+			pstmt.setString(3, dto.getPrice());
+			pstmt.setString(4, dto.getVolume());
+			pstmt.setString(5, dto.getCode());
 			
 			int result = pstmt.executeUpdate();
 			
