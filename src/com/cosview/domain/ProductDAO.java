@@ -10,32 +10,11 @@ import com.cosview.dto.ProductDTO;
 import com.cosview.view.MemberView;
 
 public class ProductDAO extends DAO{
-	
-		
-	
-	
-	//연결정보
-	private String driver="com.mysql.cj.jdbc.Driver";
-	private String url="jdbc:mysql://localhost:3306/cosmeticdb";
-	private String id="root";
-	private String pw="lmh49092";
-	
-	//연결객체정보
-	private PreparedStatement pstmt = null;
-	private ResultSet rs = null;
-	private Connection conn = null;
+
+	private int result;
 	
 	//생성자
-	public ProductDAO() {
-		try {
-			Class.forName(driver);
-			System.out.println("Driver Loading Success");
-			conn = DriverManager.getConnection(url,id,pw);
-			System.out.println("DBConnected....");
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
+//	public ProductDAO() {}
 	
 	public boolean Select(ProductDTO dto) {
 		try {
@@ -91,6 +70,58 @@ public class ProductDAO extends DAO{
 		}
 		return false;
 	}
+	
+	public boolean Update(ProductDTO dto) {
+        try {
+            //SQL전송 객체
+            pstmt = conn.prepareStatement("update product_Tbl set name=?,brand=?,price=?,volume=? where code=?");
+            pstmt.setString(1, dto.getName());
+            pstmt.setString(2, dto.getBrand());
+            pstmt.setString(3, dto.getPrice());
+            pstmt.setString(4, dto.getVolume());
+            pstmt.setString(5, dto.getCode());
+
+            //SQL전송
+            result = pstmt.executeUpdate();
+
+            if (result != 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                conn.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+
+    public boolean Delete(ProductDTO dto) {
+        //연결
+        try {
+            //SQL전송객체 생성
+            pstmt = conn.prepareStatement("delete from product_tbl where code=?");
+            pstmt.setString(1, dto.getCode());
+
+            //SQL 전송
+            result = pstmt.executeUpdate();
+
+            if (result != 0) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {pstmt.close();} catch (Exception e1) {e1.printStackTrace();}
+        }
+        return false;
+
+    }
 
 	
 	
