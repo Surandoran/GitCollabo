@@ -36,7 +36,7 @@ public class AuthDAO extends DAO{
 	//회원 로그인 1
 	public boolean MemberLogin(AuthDTO dto) {
 		try {
-			pstmt = conn.prepareStatement("select id,pw from member where id=?");
+			pstmt = conn.prepareStatement("select id,pw from member_tbl where id=?");
 			pstmt.setString(1,dto.getId());
 			rs = pstmt.executeQuery();
 			String tid = null;

@@ -3,11 +3,13 @@ package com.cosview.main;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import com.cosview.controller.FrontController;
@@ -23,10 +25,15 @@ public class Main extends JFrame implements ActionListener{
 	JButton btn1, btn2;
 	JTextField txt1, txt2;
 	JLabel L1, L2;
+	JRadioButton employee;
+	JRadioButton member;
+	JLabel emp;
+	JLabel mem;
+	ButtonGroup radiogroup;
 	FrontController controller = new FrontController();
 	public Main() {
 		setTitle("cosview");
-		this.setBounds(100,100,400,200);
+		this.setBounds(100,100,400,230);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -39,15 +46,27 @@ public class Main extends JFrame implements ActionListener{
 		btn2 = new JButton("회원가입");
 		L1 = new JLabel("ID");
 		L2 = new JLabel("PW");
+		emp = new JLabel("관리자");
+		mem = new JLabel("회원");
+		employee = new JRadioButton("관리자");
+		member = new JRadioButton("회원");
+		
+		//직원 또는 회원 둘중 하나를 누를수있도록 그룹화
+		radiogroup= new ButtonGroup();
+		radiogroup.add(employee);
+		radiogroup.add(member);
 		
 		//위치크기 설정
-		L1.setBounds(40,10,90, 30);
-		L2.setBounds(40,65,90, 30);
-		txt1.setBounds(40, 35, 200,30);
-		txt2.setBounds(40, 90, 200,30);
-		btn1.setBounds(250, 35, 90,30);
-		btn2.setBounds(250, 90, 90,30);
-		
+		L1.setBounds(40,35,90, 30);
+		L2.setBounds(40,90,90, 30);
+		txt1.setBounds(40, 60, 200,30);
+		txt2.setBounds(40, 115, 200,30);
+		btn1.setBounds(250, 60, 90,30);
+		btn2.setBounds(250, 115, 90,30);
+		employee.setBounds(130,15,20,20);
+		emp.setBounds(150,15,40,20);
+		member.setBounds(200,15,20,20);
+		mem.setBounds(220,15,40,20);
 		
 		//추가
 		p1.add(txt1);
@@ -56,13 +75,17 @@ public class Main extends JFrame implements ActionListener{
 		p1.add(btn2);
 		p1.add(L1);
 		p1.add(L2);
+		p1.add(emp);
+		p1.add(mem);
+		p1.add(employee);
+		p1.add(member);
 		
 		
 		
 		
 		this.add(p1);
 		
-		
+		employee.setSelected(true);
 		btn1.addActionListener(this);
 		btn2.addActionListener(this);
 		
@@ -83,7 +106,7 @@ public class Main extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == btn1){
+		if(member.isSelected()&&e.getSource()==btn1){
 			AuthDTO dto = new  AuthDTO(txt1.getText(), txt2.getText());
         	boolean r1 = controller.SubControllerEX("AUTH", 1, dto);
         	if(r1) {
@@ -91,7 +114,18 @@ public class Main extends JFrame implements ActionListener{
         		new MemberView();
         		JOptionPane.showMessageDialog(null, "환영합니다.");
         	}else {
-        		System.out.println("인증 실패");
+        		System.out.println("로그인 실패");
+        		JOptionPane.showMessageDialog(null, "ID PW 다릅니다.");
+        	}
+		}else if(employee.isSelected()&&e.getSource()==btn1) {
+			AuthDTO dto = new  AuthDTO(txt1.getText(), txt2.getText());
+        	boolean r1 = controller.SubControllerEX("AUTH", 2, dto);
+        	if(r1) {
+        		System.out.println("로그인 성공");
+        		new MemberView();
+        		JOptionPane.showMessageDialog(null, "접속완료.");
+        	}else {
+        		System.out.println("로그인 실패");
         		JOptionPane.showMessageDialog(null, "ID PW 다릅니다.");
         	}
 		}
