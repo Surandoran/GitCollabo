@@ -40,7 +40,7 @@ public class ProductDAO extends DAO {
         }
         return false;
     }
-
+//test
     public boolean Insert(ProductDTO dto) {    //삽입
         try {
             pstmt = conn.prepareStatement("insert into product_tbl values(?,?,?,?,?)");
