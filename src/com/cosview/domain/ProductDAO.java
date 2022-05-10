@@ -4,14 +4,20 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import com.cosview.dto.ProductDTO;
+import com.cosview.view.EmployeeView;
+import com.cosview.view.MemberView;
 
-public class ProductDAO {
-
+public class ProductDAO extends DAO{
+	
+		
+	
+	
 	//연결정보
 	private String driver="com.mysql.cj.jdbc.Driver";
-	private String url="jdbc:mysql://localhost:3310/cosmeticdb";
+	private String url="jdbc:mysql://localhost:3306/cosmeticdb";
 	private String id="root";
 	private String pw="1234";
 	
@@ -34,17 +40,37 @@ public class ProductDAO {
 	
 	public boolean Select(ProductDTO dto) {
 		try {
-			pstmt = conn.prepareStatement("select * from product_tbl");
+			
+			pstmt =conn.prepareStatement("select * from product_tbl");
+			
 			rs = pstmt.executeQuery();
+			
 			while(rs.next()) {
-				System.out.println(rs.getString("name") + " " + rs.getString("brand") + " " + rs.getInt("price") + 
-						" " + rs.getString("volume"));
+				EmployeeView.area.append(rs.getString("name") + " " + rs.getString("brand") + " "
+						+ rs.getString("price") + " " + rs.getString("volume")+ rs.getString("Code")+ "\n");
+				MemberView.area.append(rs.getString("name") + " " + rs.getString("brand") + " "
+						+ rs.getString("price") + " " + rs.getString("volume")+ rs.getString("Code")+ "\n");
+				System.out.println(rs.getString("name") + " " + rs.getString("brand") + " "
+						+ rs.getInt("price") + " " + rs.getString("volume"));
 			}
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return false;
 	}
+	
+	
 	
 	public boolean Insert(ProductDTO dto) {
 		try {
@@ -53,6 +79,7 @@ public class ProductDAO {
 			pstmt.setString(2, dto.getBrand());
 			pstmt.setString(3, dto.getPrice());
 			pstmt.setString(4, dto.getVolume());
+			pstmt.setString(5, dto.getCode());
 			
 			int result = pstmt.executeUpdate();
 			
