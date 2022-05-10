@@ -28,6 +28,7 @@ public class MemberView extends JFrame implements ActionListener{
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		
 		p1 = new JPanel();
 		p1.setLayout(null);
 		serchBtn = new JButton("상품검색");
