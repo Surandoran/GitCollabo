@@ -170,7 +170,6 @@ public class EmployeeView extends JFrame implements ActionListener{
 
         input.add(pan);
 
-        input.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         input.setBounds(100, 100, 500, 440);
         input.setVisible(true);
 
