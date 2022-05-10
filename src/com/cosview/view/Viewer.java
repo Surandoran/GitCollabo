@@ -71,7 +71,7 @@ public class Viewer {
 				String price = sc.next();
 				System.out.println("용량 :");
 				String volume = sc.next();
-				ProductDTO dto = new ProductDTO(name, brand, price, volume);
+//				ProductDTO dto = new ProductDTO(name, brand, price, volume,code);
 				boolean result = controller.SubControllerEX("Product", 2, dto);
 				
 				if(result)
