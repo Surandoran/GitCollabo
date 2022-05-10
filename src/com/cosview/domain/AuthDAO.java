@@ -5,7 +5,7 @@ import com.cosview.dto.MemberDTO;
 
 public class AuthDAO extends DAO{
 	
-	public AuthDAO() {};
+//	public AuthDAO() {}
 	
 	
 	public boolean MemberInsert(MemberDTO dto) {

@@ -2,11 +2,11 @@ package com.cosview.controller;
 
 import com.cosview.dto.DTO;
 import com.cosview.dto.ProductDTO;
-import com.cosview.service.cosService;
+import com.cosview.service.ProductService;
 
 public class ProductController implements SubController{
 
-	cosService service = new cosService();
+	ProductService service = new ProductService();
 	@Override
 	public boolean execute(int num, DTO dto) {
 		
@@ -18,9 +18,9 @@ public class ProductController implements SubController{
 		}else if(num==2) {
 			return service.Insert(bdto);
 		}else if(num==3) {
-			
+			return service.Update(bdto);
 		}else if(num==4) {
-			
+			return service.Delete(bdto);
 		}
 		
 		return false;
