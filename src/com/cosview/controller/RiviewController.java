@@ -1,19 +1,21 @@
 package com.cosview.controller;
 
-import com.cosview.domain.RiviewDAO;
+import com.cosview.domain.ReviewDAO;
 import com.cosview.dto.DTO;
-import com.cosview.dto.RiviewDTO;
-import com.cosview.service.RiviewService;
+import com.cosview.dto.ReviewDTO;
+
+import com.cosview.service.ReviewService;
+
 
 public class RiviewController implements SubController {
 
-    RiviewService service = new RiviewService();
+    ReviewService service = new ReviewService();
 
     @Override
     public boolean execute(int num, DTO dto) {
 
         //downcasting
-        RiviewDTO rdto = (RiviewDTO) dto;
+        ReviewDTO rdto = (ReviewDTO) dto;
 
         //1: 조회,2: 삽입,3: 수정,4: 삭제
         if (num == 1) {

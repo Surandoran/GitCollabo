@@ -8,9 +8,9 @@ import java.sql.ResultSet;
 public class DAO {
 	
 	//연결정보
-		String driver="com.mysql.cj.jdbc.Driver";
-		String url="jdbc:mysql://localhost:3310/cosmeticdb";
-		String id="root";
+		String driver="oracle.jdbc.driver.OracleDriver";
+		String url="jdbc:oracle:thin:@localhost:1521:XE";
+		String id="COSMETIC_EX";
 		String pw="1234";
 		
 

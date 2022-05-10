@@ -65,6 +65,7 @@ public class MemberView extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == allBtn) {
+			area.setText("");
 			ProductDAO dao = new ProductDAO();
 			dao.Select(dto);
 		}

@@ -72,7 +72,7 @@ public class AuthDAO extends DAO{
 	public boolean EmployeeLogin(AuthDTO dto) {
 		try {
 			try {
-				pstmt = conn.prepareStatement("select id,pw from employee_tbl where id=?");
+				pstmt = conn.prepareStatement("select * from employee_tbl where id=?");
 				pstmt.setString(1,dto.getId());
 				rs = pstmt.executeQuery();
 				String tid = null;

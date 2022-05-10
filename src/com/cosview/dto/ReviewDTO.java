@@ -1,18 +1,18 @@
 package com.cosview.dto;
 
-public class RiviewDTO extends DTO{
+public class ReviewDTO extends DTO{
         private String name;
         private String price;
         private String volume;
-        private String riview;
+        private String review;
 
-    public RiviewDTO(String name, String price, String volume, String riview) {
+    public ReviewDTO(String name, String price, String volume, String review) {
         this.name = name;
         this.price = price;
         this.volume = volume;
-        this.riview = riview;
+        this.review = review;
     }
-    public RiviewDTO(String name){
+    public ReviewDTO(String name){
         this.name = name;
     }
 
@@ -40,12 +40,12 @@ public class RiviewDTO extends DTO{
         this.volume = volume;
     }
 
-    public String getRiview() {
-        return riview;
+    public String getReview() {
+        return review;
     }
 
-    public void setRiview(String riview) {
-        this.riview = riview;
+    public void setReview(String riview) {
+        this.review = riview;
     }
 
     @Override
@@ -54,7 +54,7 @@ public class RiviewDTO extends DTO{
                 "name='" + name + '\'' +
                 ", price='" + price + '\'' +
                 ", volume='" + volume + '\'' +
-                ", riview='" + riview + '\'' +
+                ", riview='" + review + '\'' +
                 '}';
     }
 }
