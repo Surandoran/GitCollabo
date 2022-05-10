@@ -7,12 +7,6 @@ public class ProductDTO extends DTO {
     private String volume;
     private String code;
 
-    public ProductDTO(String name, String brand, String price, String volume) {
-        this.name = name;
-        this.brand = brand;
-        this.price = price;
-        this.volume = volume;
-    }
 
     public ProductDTO(String name, String brand, String price, String volume, String code) {
         super();
@@ -20,6 +14,10 @@ public class ProductDTO extends DTO {
         this.brand = brand;
         this.price = price;
         this.volume = volume;
+        this.code = code;
+    }
+    public ProductDTO(String code) {
+
         this.code = code;
     }
 

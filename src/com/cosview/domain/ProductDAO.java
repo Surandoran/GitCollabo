@@ -25,9 +25,8 @@ public class ProductDAO extends DAO{
 			
 			while(rs.next()) {
 				MemberView.area.append(rs.getString("name") + " " + rs.getString("brand") + " "
-						+ rs.getString("price") + " " + rs.getString("volume")+ rs.getString("Code")+ "\n");
-				System.out.println(rs.getString("name") + " " + rs.getString("brand") + " "
-						+ rs.getInt("price") + " " + rs.getString("volume"));
+						+ rs.getString("price") + " " + rs.getString("volume")+ "\n");
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -50,7 +49,7 @@ public class ProductDAO extends DAO{
 	
 	public boolean Insert(ProductDTO dto) {
 		try {
-			pstmt = conn.prepareStatement("insert into product_tbl values(?,?,?,?)");
+			pstmt = conn.prepareStatement("insert into product_tbl values(?,?,?,?,?)");
 			pstmt.setString(1, dto.getName());
 			pstmt.setString(2, dto.getBrand());
 			pstmt.setString(3, dto.getPrice());

@@ -6,22 +6,23 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Scanner;
 
-import com.cosview.dto.RiviewDTO;
+import com.cosview.dto.ReviewDTO;
 
-public class RiviewDAO extends DAO {
+
+public class ReviewDAO extends DAO {
     int result;
 
-    public boolean RInqury(RiviewDTO dto) {    //조회
+    public boolean RInqury(ReviewDTO dto) {    //조회
         try {
             //SQL 전송 객체
-            pstmt = conn.prepareStatement("select * from riview_tbl");
+            pstmt = conn.prepareStatement("select * from review_tbl");
 
             //SQL 실행
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
                 System.out.println(
-                        rs.getString("name") + "\t" + rs.getString("price") + "\t" + rs.getString("volume") + "\t" + rs.getString("riview"
+                        rs.getString("name") + "\t" + rs.getString("price") + "\t" + rs.getString("volume") + "\t" + rs.getString("review"
                         )
                 );
 
@@ -41,13 +42,13 @@ public class RiviewDAO extends DAO {
         return false;
     }
 
-    public boolean RInsert(RiviewDTO dto) {    //삽입
+    public boolean RInsert(ReviewDTO dto) {    //삽입
         try {
-            pstmt = conn.prepareStatement("insert into riview_tbl values(?,?,?,?)");
+            pstmt = conn.prepareStatement("insert into review_tbl values(?,?,?,?)");
             pstmt.setString(1, dto.getName());
             pstmt.setString(2, dto.getPrice());
             pstmt.setString(3, dto.getVolume());
-            pstmt.setString(4, dto.getRiview());
+            pstmt.setString(4, dto.getReview());
 
             result = pstmt.executeUpdate();
 
@@ -67,14 +68,14 @@ public class RiviewDAO extends DAO {
         return false;
     }
 
-    public boolean RUpdate(RiviewDTO dto) {
+    public boolean RUpdate(ReviewDTO dto) {
         try {
             //SQL전송 객체
-            pstmt = conn.prepareStatement("update riview_Tbl set name=?,price=?,volume=?,riview=? where name=?");
+            pstmt = conn.prepareStatement("update review_Tbl set name=?,price=?,volume=?,review=? where name=?");
             pstmt.setString(1, dto.getName());
             pstmt.setString(2, dto.getPrice());
             pstmt.setString(3, dto.getVolume());
-            pstmt.setString(4, dto.getRiview());
+            pstmt.setString(4, dto.getReview());
 
             //SQL전송
             result = pstmt.executeUpdate();
@@ -96,11 +97,11 @@ public class RiviewDAO extends DAO {
     }
 
 
-    public boolean RDelete(RiviewDTO dto) {
+    public boolean RDelete(ReviewDTO dto) {
         //연결
         try {
             //SQL전송객체 생성
-            pstmt = conn.prepareStatement("delete from riview_tbl where name=?");
+            pstmt = conn.prepareStatement("delete from review_tbl where name=?");
             pstmt.setString(1, dto.getName());
 
             //SQL 전송

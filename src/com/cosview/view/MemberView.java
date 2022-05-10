@@ -28,6 +28,7 @@ public class MemberView extends JFrame implements ActionListener{
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		
 		p1 = new JPanel();
 		p1.setLayout(null);
 		serchBtn = new JButton("상품검색");
@@ -65,6 +66,7 @@ public class MemberView extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == allBtn) {
+			area.setText("");
 			ProductDAO dao = new ProductDAO();
 			dao.Select(dto);
 		}

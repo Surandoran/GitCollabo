@@ -53,7 +53,7 @@ public class Main extends JFrame implements ActionListener{
       p1 = new JPanel();
       p1.setBackground(Color.black);
       p1.setLayout(null);
-      txt1 = new JTextField("아이디를 입력하세요");
+      txt1 = new JTextField();
       txt2 = new JTextField();
       btn1 = new JButton("Login");
       btn1.setFont(font);
