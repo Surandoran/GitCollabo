@@ -1,12 +1,13 @@
 package com.cosview.dto;
 
 public class MemberDTO {
+	private String nickName;
 	private String id;
 	private String pw;
 	private String name;
-	private String nickName;
-	private String addr;
 	private String email;
+	private String addr;
+	private String gender;
 
 	public MemberDTO(String id, String pw, String name, String nickName, String addr, String email) {
 		super();

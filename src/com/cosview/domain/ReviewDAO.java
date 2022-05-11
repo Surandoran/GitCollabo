@@ -22,8 +22,8 @@ public class ReviewDAO extends DAO {
 
             while (rs.next()) {
                 System.out.println(
-                        rs.getString("name") + "\t" + rs.getString("price") + "\t" + rs.getString("volume") + "\t" + rs.getString("review"
-                        )
+                        rs.getString("name") + "\t" + rs.getString("member_nickname ") + "\t" + rs.getString("product_name ") + "\t" 
+                + rs.getString("contents" +  "\t" + rs.getInt("score")+ "\t" + rs.getString("insert_time  "))
                 );
 
             }
@@ -44,11 +44,13 @@ public class ReviewDAO extends DAO {
 
     public boolean RInsert(ReviewDTO dto) {    //삽입
         try {
-            pstmt = conn.prepareStatement("insert into review_tbl values(?,?,?,?)");
+            pstmt = conn.prepareStatement("insert into review_tbl values(?,?,?,?,?,?)");
             pstmt.setString(1, dto.getName());
-            pstmt.setString(2, dto.getPrice());
-            pstmt.setString(3, dto.getVolume());
-            pstmt.setString(4, dto.getReview());
+            pstmt.setString(2, dto.getMember_nickname ());
+            pstmt.setString(3, dto.getProduct_name ());
+            pstmt.setString(4, dto.getContents ());
+            pstmt.setInt(5, dto.getScore());
+            pstmt.setString(6, dto.getInsert_time());
 
             result = pstmt.executeUpdate();
 
@@ -71,11 +73,13 @@ public class ReviewDAO extends DAO {
     public boolean RUpdate(ReviewDTO dto) {
         try {
             //SQL전송 객체
-            pstmt = conn.prepareStatement("update review_Tbl set name=?,price=?,volume=?,review=? where name=?");
+            pstmt = conn.prepareStatement("update review_Tbl set name=?,member_nickname =?,product_name =?,contents =?,score  =?,insert_time  =? where name=?");
             pstmt.setString(1, dto.getName());
-            pstmt.setString(2, dto.getPrice());
-            pstmt.setString(3, dto.getVolume());
-            pstmt.setString(4, dto.getReview());
+            pstmt.setString(2, dto.getMember_nickname ());
+            pstmt.setString(3, dto.getProduct_name ());
+            pstmt.setString(4, dto.getContents ());
+            pstmt.setInt(5, dto.getScore());
+            pstmt.setString(6, dto.getInsert_time());
 
             //SQL전송
             result = pstmt.executeUpdate();

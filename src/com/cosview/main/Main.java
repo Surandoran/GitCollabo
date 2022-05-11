@@ -50,14 +50,14 @@ public class Main extends JFrame implements ActionListener{
       Font font1 = new Font("Serif", Font.ITALIC, 17);
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       
-      icon = new ImageIcon("image/cos.png");
+      icon = new ImageIcon("C:\\Users\\이명희\\git\\GitCollabo3\\src\\com\\cosview\\main\\cos.png");
       
       p1 = new JPanel();
       p1.setBackground(Color.black);
       p1.setLayout(null);
-      txt1 = new JTextField("son");
+      txt1 = new JTextField();
       
-      txt2 = new JTextField("1234");
+      txt2 = new JTextField();
       btn1 = new JButton("Login");
       btn1.setFont(font);
       btn1.setBackground(Color.gray);

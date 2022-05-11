@@ -3,6 +3,8 @@ package com.cosview.dto;
 public class AuthDTO extends DTO{
 	private String id;
 	private String pw;
+	private String join_time;
+	private String position;
 	
 	public AuthDTO(String id, String pw) {
 		super();

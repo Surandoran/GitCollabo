@@ -10,13 +10,14 @@ public class AuthDAO extends DAO{
 	
 	public boolean MemberInsert(MemberDTO dto) {
 		try {
-			pstmt = conn.prepareStatement("insert into member_tbl values(?,?,?,?,?,?)");
-			pstmt.setString(1, dto.getId());
-			pstmt.setString(2, dto.getPw());
-			pstmt.setString(3, dto.getName());
-			pstmt.setString(4, dto.getEmail());
-			pstmt.setString(5, dto.getNickName());
+			pstmt = conn.prepareStatement("insert into member_tbl values(?,?,?,?,?,?,?)");
+			pstmt.setString(1, dto.getNickName());
+			pstmt.setString(2, dto.getId());
+			pstmt.setString(3, dto.getPw());
+			pstmt.setString(4, dto.getName());
+			pstmt.setString(5, dto.getEmail());
 			pstmt.setString(6, dto.getAddr());
+			pstmt.setString(7, "men");
 
 			
 			int result = pstmt.executeUpdate();
