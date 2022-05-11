@@ -7,10 +7,10 @@ public class MemberDTO {
 	private String nickName;
 	private String addr;
 	private String email;
-	private boolean gender;
+	private String gender;
 
 
-	public MemberDTO(String id, String pw, String name, String nickName, String addr, String email, boolean gender) {
+	public MemberDTO(String id, String pw, String name, String nickName, String addr, String email, String gender) {
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
@@ -68,11 +68,11 @@ public class MemberDTO {
 		this.email = email;
 	}
 
-	public boolean getGender() {
+	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(boolean gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
