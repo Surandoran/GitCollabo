@@ -23,7 +23,7 @@ public class MemberView extends JFrame implements ActionListener{
 	ProductDTO dto;
 	
 	public MemberView() {
-		setTitle("MemverView");
+		setTitle("회원");
 		this.setBounds(600,300,700,700);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -33,7 +33,7 @@ public class MemberView extends JFrame implements ActionListener{
 		p1.setLayout(null);
 		serchBtn = new JButton("상품검색");
 		allBtn = new JButton("상품 전체 보기"); 
-		reviewBtn = new JButton("리뷰보기");
+		reviewBtn = new JButton("리뷰");
 		serchTxt = new JTextField();
 		area = new JTextArea();
 		scroll = new JScrollPane(area); 
@@ -54,6 +54,7 @@ public class MemberView extends JFrame implements ActionListener{
 		
 
 		allBtn.addActionListener(this);
+		reviewBtn.addActionListener(this);
 		
 		this.add(p1);
 		setVisible(true);
@@ -69,6 +70,9 @@ public class MemberView extends JFrame implements ActionListener{
 			area.setText("");
 			ProductDAO dao = new ProductDAO();
 			dao.Select(dto);
+		}
+		if(e.getSource() == reviewBtn) {
+			new ReviewView();
 		}
 		
 	}

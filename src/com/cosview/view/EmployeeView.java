@@ -169,7 +169,7 @@ public class EmployeeView extends JFrame implements ActionListener{
         Delete.addActionListener(this);
 
         input.add(pan);
-
+        
         input.setBounds(100, 100, 500, 440);
         input.setVisible(true);
 
@@ -181,6 +181,7 @@ public class EmployeeView extends JFrame implements ActionListener{
 		if (e.getSource() == selectbtn) {
 			MemberView.area.setText("");
 			ProductDAO dao = new ProductDAO();
+			System.out.println("조회");
 			dao.Select(dto);
 		}
 		if(e.getSource() == insertbtn) {

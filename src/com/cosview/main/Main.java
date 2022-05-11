@@ -50,7 +50,7 @@ public class Main extends JFrame implements ActionListener{
       Font font1 = new Font("Serif", Font.ITALIC, 17);
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       
-      icon = new ImageIcon("4Cosmetic/src/image/cos.png");
+      icon = new ImageIcon("image/cos.png");
       
       p1 = new JPanel();
       p1.setBackground(Color.black);
