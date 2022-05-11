@@ -24,7 +24,8 @@ public class ProductDAO extends DAO{
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				MemberView.area.append(rs.getString("code") + " = " + rs.getString("name") + " " + rs.getString("brand") + " "
+				
+				MemberView.area.append(rs.getString("name") + " " + rs.getString("brand") + " "
 						+ rs.getString("price") + " " + rs.getString("volume")+ "\n");
 				
 			}
