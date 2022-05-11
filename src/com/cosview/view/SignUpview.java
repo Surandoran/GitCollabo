@@ -12,19 +12,28 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import com.cosview.controller.FrontController;
 import com.cosview.domain.AuthDAO;
+import com.cosview.domain.MemberDAO;
 import com.cosview.dto.MemberDTO;
 import com.cosview.main.Main;
+import jdk.nashorn.internal.scripts.JO;
 
 public class SignUpview extends JFrame implements ActionListener {
+
+    FrontController controller = new FrontController();
+
+    boolean r;
+
+    MemberDTO mdto;
+    MemberDAO dao;
+
+
     JLabel name, nickName, ID, PW, email, addr, menL, womanL, gender;
     JPanel p1;
-    JTextField nametxt, nicktxt, IDtxt, PWtxt, emailtxt, addrtxt, gendertxt;
+    JTextField nametxt, nicktxt, idtxt, pwtxt, emailtxt, addrtxt, gendertxt;
     JButton SignUpBtn, back;
     JRadioButton men, woman;
-    MemberDTO dto;
-    boolean s;
-    AuthDAO dao;
 
     public SignUpview() {
         setTitle("cosview");
@@ -54,8 +63,8 @@ public class SignUpview extends JFrame implements ActionListener {
 
         nametxt = new JTextField();
         nicktxt = new JTextField();
-        IDtxt = new JTextField();
-        PWtxt = new JTextField();
+        idtxt = new JTextField();
+        pwtxt = new JTextField();
         emailtxt = new JTextField();
         addrtxt = new JTextField();
         gendertxt = new JTextField();
@@ -82,8 +91,8 @@ public class SignUpview extends JFrame implements ActionListener {
 
         nametxt.setBounds(100, 10, 200, 30);
         nicktxt.setBounds(100, 50, 200, 30);
-        IDtxt.setBounds(100, 90, 200, 30);
-        PWtxt.setBounds(100, 130, 200, 30);
+        idtxt.setBounds(100, 90, 200, 30);
+        pwtxt.setBounds(100, 130, 200, 30);
         emailtxt.setBounds(100, 170, 200, 30);
         addrtxt.setBounds(100, 210, 200, 30);
         gendertxt.setBounds(100, 250, 200, 30);
@@ -102,8 +111,8 @@ public class SignUpview extends JFrame implements ActionListener {
         p1.add(addrtxt);
         p1.add(nametxt);
         p1.add(nicktxt);
-        p1.add(IDtxt);
-        p1.add(PWtxt);
+        p1.add(idtxt);
+        p1.add(pwtxt);
         p1.add(emailtxt);
 
 
@@ -127,25 +136,39 @@ public class SignUpview extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == SignUpBtn){
+            mdto = new MemberDTO(nicktxt.getText(),idtxt.getText(),pwtxt.getText(),nametxt.getText(),addrtxt.getText(),emailtxt.getText(),gendertxt.getText());
 
-        if (e.getSource() == SignUpBtn) {
-            if (nametxt.getText() == "") {
-                JOptionPane.showMessageDialog(null, "빈칸을 입력해주세요.");
-//            if (men.isSelected()){
-//                s = true;
-//            }else if (woman.isSelected()) {
-//                s = false;
-//            }
-                dto = new MemberDTO(IDtxt.getText(), PWtxt.getText(), nametxt.getText(), emailtxt.getText(),
-                        nicktxt.getText(), addrtxt.getText(), gendertxt.getText());
-                dao.MemberInsert(dto);
-                setVisible(false);
+            r = controller.SubControllerEX("MEMBER", 2, mdto);
+            if(r){
+                p1.setVisible(false);
+            }else{
+                JOptionPane.showMessageDialog(null, "빈칸을 입력해주세요");
             }
         }
-
-		if(e.getSource()==back);
-			setVisible(false);
     }
+
+//    @Override
+//    public void actionPerformed(ActionEvent e) {
+//
+//        if (e.getSource() == SignUpBtn) {
+//            if (nametxt.getText() == "") {
+//                JOptionPane.showMessageDialog(null, "빈칸을 입력해주세요.");
+////            if (men.isSelected()){
+////                s = true;
+////            }else if (woman.isSelected()) {
+////                s = false;
+////            }
+//                dto = new MemberDTO(IDtxt.getText(), PWtxt.getText(), nametxt.getText(), emailtxt.getText(),
+//                        nicktxt.getText(), addrtxt.getText(), gendertxt.getText());
+//                dao.MemberInsert(dto);
+//                setVisible(false);
+//            }
+//        }
+//
+//		if(e.getSource()==back);
+//			setVisible(false);
+//    }
 
 
 }

@@ -21,6 +21,7 @@ public class MemberView extends JFrame implements ActionListener{
 	JScrollPane scroll;
 	
 	ProductDTO dto;
+	ProductDAO dao;
 	
 	public MemberView() {
 		setTitle("회원");
@@ -68,7 +69,7 @@ public class MemberView extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == allBtn) {
 			area.setText("");
-			ProductDAO dao = new ProductDAO();
+			dao = new ProductDAO();
 			dao.Select(dto);
 		}
 		if(e.getSource() == reviewBtn) {

@@ -1,23 +1,30 @@
 package com.cosview.dto;
 
-public class MemberDTO {
+public class MemberDTO extends DTO {
+	private String nickName;
 	private String id;
 	private String pw;
 	private String name;
-	private String nickName;
 	private String addr;
 	private String email;
 	private String gender;
 
-
-	public MemberDTO(String id, String pw, String name, String nickName, String addr, String email, String gender) {
+	public MemberDTO(String nickName, String id, String pw, String name, String addr, String email, String gender) {
+		this.nickName = nickName;
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
-		this.nickName = nickName;
 		this.addr = addr;
 		this.email = email;
 		this.gender = gender;
+	}
+
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	public String getId() {
@@ -42,14 +49,6 @@ public class MemberDTO {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getNickName() {
-		return nickName;
-	}
-
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
 	}
 
 	public String getAddr() {
@@ -79,10 +78,10 @@ public class MemberDTO {
 	@Override
 	public String toString() {
 		return "MemberDTO{" +
-				"id='" + id + '\'' +
+				"nickName='" + nickName + '\'' +
+				", id='" + id + '\'' +
 				", pw='" + pw + '\'' +
 				", name='" + name + '\'' +
-				", nickName='" + nickName + '\'' +
 				", addr='" + addr + '\'' +
 				", email='" + email + '\'' +
 				", gender='" + gender + '\'' +

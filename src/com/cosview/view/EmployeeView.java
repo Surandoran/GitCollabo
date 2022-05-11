@@ -4,28 +4,26 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.*;
 
+import com.cosview.controller.FrontController;
 import com.cosview.domain.ProductDAO;
 import com.cosview.dto.ProductDTO;
 
 
 
 public class EmployeeView extends JFrame implements ActionListener{
+	FrontController controller = new FrontController();
+	ProductDAO dao = new ProductDAO();
+	ProductDTO dto;
+	boolean r;
+
 	JButton selectbtn, insertbtn, updatebtn, deletebtn, reviewbtn,enter, Update, Delete;
 	JScrollPane scroll;
 	JTextField name, brand, price, volume, code;
 	JPanel p1, pan;
 	JLabel L1,L2,L3,L4,L5;
 	JFrame input;
-	ProductDTO dto;
-	ProductDAO dao;
 	public EmployeeView() {
 		setTitle("관리시스템");
 		this.setBounds(100,100,600,500);
@@ -217,7 +215,6 @@ public class EmployeeView extends JFrame implements ActionListener{
 		//조회
 		if (e.getSource() == selectbtn) {
 			MemberView.area.setText("");
-			dao = new ProductDAO();
 			dao.Select(dto);
 		}
 		//삽입
@@ -225,20 +222,28 @@ public class EmployeeView extends JFrame implements ActionListener{
 			this.Insert();
 		}
 		if(e.getSource() == enter) {
-			dto = new ProductDTO(name.getText(), brand.getText(), price.getText(), volume.getText(), code.getText());
-			dao = new ProductDAO();
-			dao.Insert(dto);
-			input.setVisible(false);
+			dto = new ProductDTO(name.getText(),brand.getText(),price.getText(),volume.getText(),code.getText());
+
+			r = controller.SubControllerEX("COSMETIC", 2, dto);
+			if(r){
+				input.setVisible(false);
+			}else{
+				JOptionPane.showMessageDialog(null, "상품삽입실패!");
+			}
 		}
 		// 수정
 		if (e.getSource() == updatebtn) {
 			this.Update();
 		}
 		if(e.getSource() == Update) {
-			dto = new ProductDTO(name.getText(), brand.getText(), price.getText(), volume.getText(), code.getText());
-			dao = new ProductDAO();
-			dao.Update(dto);
-			input.setVisible(false);
+			dto = new ProductDTO(name.getText(),brand.getText(),price.getText(),volume.getText(),code.getText());
+
+			r = controller.SubControllerEX("COSMETIC", 3, dto);
+			if(r){
+				input.setVisible(false);
+			}else{
+				JOptionPane.showMessageDialog(null, "수정실패!");
+			}
 		}
 		// 삭제
 		if(e.getSource() == deletebtn) {
@@ -246,9 +251,14 @@ public class EmployeeView extends JFrame implements ActionListener{
 		}
 		if(e.getSource()== Delete) {
 			dto = new ProductDTO(code.getText());
-			dao = new ProductDAO();
-			dao.Delete(dto);
-			input.setVisible(false);
+
+			r = controller.SubControllerEX("COSMETIC", 4, dto);
+			if(r){
+				System.out.println("삭제 성공!");
+				input.setVisible(false);
+			}else{
+				JOptionPane.showMessageDialog(null, "삭제실패!");
+			}
 		}
 		
 		

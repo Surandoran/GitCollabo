@@ -6,50 +6,7 @@ import com.cosview.view.SignUpview;
 
 public class AuthDAO extends DAO {
 
-    //	public AuthDAO() {}
-    String es = null;
-
-    public boolean MemberInsert(MemberDTO dto) {
-        try {
-
-
-            pstmt = conn.prepareStatement("insert into member_tbl values(?,?,?,?,?,?,?)");
-
-            rs = pstmt.executeQuery();
-            String tid = null;
-//            while (rs.next()) {
-//                if (rs.getBoolean("gender") == true) {
-//                    es = "남성";
-//                } else if (rs.getBoolean("gender") == false) {
-//                    es = "여성";
-//                }
-
-            pstmt.setString(1, dto.getNickName());
-            pstmt.setString(2, dto.getId());
-            pstmt.setString(3, dto.getPw());
-            pstmt.setString(4, dto.getName());
-            pstmt.setString(5, dto.getEmail());
-            pstmt.setString(6, dto.getAddr());
-            pstmt.setString(7, dto.getGender());
-//            }
-            int result = pstmt.executeUpdate();
-            if (result != 0) {
-                return true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                pstmt.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-
-        return false;
-    }
-
+    public AuthDAO(){};
 
     //회원 로그인 1
     public boolean MemberLogin(AuthDTO dto) {

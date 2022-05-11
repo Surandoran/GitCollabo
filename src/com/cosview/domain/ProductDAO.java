@@ -11,7 +11,7 @@ import com.cosview.view.MemberView;
 
 public class ProductDAO extends DAO{
 
-	private int result;
+	int result;
 	
 	//생성자
 //	public ProductDAO() {}
@@ -25,7 +25,7 @@ public class ProductDAO extends DAO{
 			
 			while(rs.next()) {
 				MemberView.area.append(rs.getString("name") + " " + rs.getString("brand") + " "
-						+ rs.getString("price") + " " + rs.getString("volume")+ "\n");
+						+ rs.getString("price") + " " + rs.getString("volume") + "\n");
 				
 			}
 		} catch (Exception e) {
@@ -33,12 +33,7 @@ public class ProductDAO extends DAO{
 		}finally {
 			try {
 				pstmt.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-			try {
-				conn.close();
-			} catch (SQLException e) {
+			}catch (Exception e){
 				e.printStackTrace();
 			}
 		}
@@ -56,7 +51,7 @@ public class ProductDAO extends DAO{
 			pstmt.setString(4, dto.getVolume());
 			pstmt.setString(5, dto.getCode());
 			
-			int result = pstmt.executeUpdate();
+			result = pstmt.executeUpdate();
 			
 			if(result!=0) {
 				return true;

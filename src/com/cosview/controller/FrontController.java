@@ -23,6 +23,7 @@ public class FrontController {
 		map.put("COSMETIC",new ProductController());
 		map.put("AUTH", new AuthController());
 		map.put("RIVIEW", new RiviewController());
+		map.put("MEMBER", new MemberController());
 	}
 	//MAP에 있는 서브컨트롤러를 꺼내어 해당 컨트롤러를 실행하는 함수
 	public boolean SubControllerEX(String menu, int num, DTO dto) {
@@ -36,8 +37,11 @@ public class FrontController {
 		}else if (menu.equals("RIVIEW")) {
             tmp = map.get("RIVIEW");
             return tmp.execute(num, dto);
-        }
-		
+        } else if (menu.equals("MEMBER")) {
+			tmp = map.get("MEMBER");
+			return tmp.execute(num, dto);
+		}
+
 		return false;
 	}
 
