@@ -142,7 +142,4 @@ public class SignUpview extends JFrame implements ActionListener {
     }
 
 
-    {
-    }
-
 }
