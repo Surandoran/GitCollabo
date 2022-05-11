@@ -50,13 +50,12 @@ public class Main extends JFrame implements ActionListener{
       Font font1 = new Font("Serif", Font.ITALIC, 17);
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       
-      icon = new ImageIcon("image/cos.png");
+      icon = new ImageIcon("cos.png");
       
       p1 = new JPanel();
       p1.setBackground(Color.black);
       p1.setLayout(null);
       txt1 = new JTextField("son");
-      
       txt2 = new JTextField("1234");
       btn1 = new JButton("Login");
       btn1.setFont(font);
