@@ -55,9 +55,9 @@ public class Main extends JFrame implements ActionListener{
       p1 = new JPanel();
       p1.setBackground(Color.black);
       p1.setLayout(null);
-      txt1 = new JTextField();
+      txt1 = new JTextField("son");
       
-      txt2 = new JTextField();
+      txt2 = new JTextField("1234");
       btn1 = new JButton("Login");
       btn1.setFont(font);
       btn1.setBackground(Color.gray);

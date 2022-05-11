@@ -22,9 +22,10 @@ public class EmployeeView extends JFrame implements ActionListener{
 	JScrollPane scroll;
 	JTextField name, brand, price, volume, code;
 	JPanel p1, pan;
-	JLabel L1;
+	JLabel L1,L2,L3,L4,L5;
 	JFrame input;
 	ProductDTO dto;
+	ProductDAO dao;
 	public EmployeeView() {
 		setTitle("관리시스템");
 		this.setBounds(100,100,600,500);
@@ -84,22 +85,33 @@ public class EmployeeView extends JFrame implements ActionListener{
 	void Insert() {
         input = new JFrame("상품 삽입!");
 
-        JPanel pan = new JPanel();
+        pan = new JPanel();
         pan.setLayout(null);
+		L1 = new JLabel("상품명");
+		L2 = new JLabel("브랜드명");
+		L3 = new JLabel("가격");
+		L4 = new JLabel("용량");
+		L5 = new JLabel("코드명");
+
 
         enter = new JButton("추가!");
-        name = new JTextField("상품명");
-        brand = new JTextField("브랜드명");
-        price = new JTextField("가격");
-        volume = new JTextField("용량");
-        code = new JTextField("코드");
+        name = new JTextField();
+        brand = new JTextField();
+        price = new JTextField();
+        volume = new JTextField();
+        code = new JTextField();
 
-        enter.setBounds(300, 70, 150, 350);
-        name.setBounds(30, 70, 250, 50);
-        brand.setBounds(30, 140, 250, 50);
-        price.setBounds(30, 210, 250, 50);
-        volume.setBounds(30, 280, 250, 50);
-        code.setBounds(30, 350, 250, 50);
+        enter.setBounds(370, 350, 80, 50);
+        name.setBounds(80, 70, 250, 50);
+		L1.setBounds(20,70,250,50);
+        brand.setBounds(80, 140, 250, 50);
+		L2.setBounds(20,140,250,50);
+        price.setBounds(80, 210, 250, 50);
+		L3.setBounds(20,210,250,50);
+        volume.setBounds(80, 280, 250, 50);
+		L4.setBounds(20,280,250,50);
+        code.setBounds(80, 350, 250, 50);
+		L5.setBounds(20,350,250,50);
 
         pan.add(name);
         pan.add(enter);
@@ -107,6 +119,11 @@ public class EmployeeView extends JFrame implements ActionListener{
         pan.add(price);
         pan.add(volume);
         pan.add(code);
+		pan.add(L1);
+		pan.add(L2);
+		pan.add(L3);
+		pan.add(L4);
+		pan.add(L5);
 
         enter.addActionListener(this);
         
@@ -122,19 +139,30 @@ public class EmployeeView extends JFrame implements ActionListener{
         pan = new JPanel();
         pan.setLayout(null);
 
-        Update = new JButton("수정!");
-        name = new JTextField("상품수정명");
-        brand = new JTextField("브랜드수정명");
-        price = new JTextField("가격수정");
-        volume = new JTextField("용량수정");
-        code = new JTextField("변경하려는 코드명을 정확히입력해주세요");
+		L1 = new JLabel("상품수정");
+		L2 = new JLabel("브랜드수정");
+		L3 = new JLabel("가격수정");
+		L4 = new JLabel("용량수정");
+		L5 = new JLabel("해당하는코드");
 
-        Update.setBounds(300, 70, 150, 350);
-        name.setBounds(30, 70, 250, 50);
-        brand.setBounds(30, 140, 250, 50);
-        price.setBounds(30, 210, 250, 50);
-        volume.setBounds(30, 280, 250, 50);
-        code.setBounds(30, 350, 250, 50);
+        Update = new JButton("확인");
+        name = new JTextField();
+        brand = new JTextField();
+        price = new JTextField();
+        volume = new JTextField();
+        code = new JTextField();
+
+		Update.setBounds(370, 350, 80, 50);
+		name.setBounds(80, 70, 250, 50);
+		L1.setBounds(0,70,250,50);
+		brand.setBounds(80, 140, 250, 50);
+		L2.setBounds(0,140,250,50);
+		price.setBounds(80, 210, 250, 50);
+		L3.setBounds(0,210,250,50);
+		volume.setBounds(80, 280, 250, 50);
+		L4.setBounds(0,280,250,50);
+		code.setBounds(80, 350, 250, 50);
+		L5.setBounds(0,350,250,50);
 
         pan.add(name);
         pan.add(Update);
@@ -142,6 +170,11 @@ public class EmployeeView extends JFrame implements ActionListener{
         pan.add(price);
         pan.add(volume);
         pan.add(code);
+		pan.add(L1);
+		pan.add(L2);
+		pan.add(L3);
+		pan.add(L4);
+		pan.add(L5);
 
         Update.addActionListener(this);
 
@@ -156,21 +189,24 @@ public class EmployeeView extends JFrame implements ActionListener{
 
         pan = new JPanel();
         pan.setLayout(null);
+		L1 = new JLabel("삭제하려는 code값을 정확히 입력해주세요");
 
         Delete = new JButton("삭제!");
-        code = new JTextField("삭제하려는 code명을 정확히입력해주세요");
+        code = new JTextField();
 
-        Delete.setBounds(300, 70, 150, 350);
-        code.setBounds(30, 350, 250, 50);
+        Delete.setBounds(300, 25, 100, 50);
+		L1.setBounds(30,20,300,30);
+        code.setBounds(30, 50, 50, 30);
 
         pan.add(Delete);
         pan.add(code);
+		pan.add(L1);
 
         Delete.addActionListener(this);
 
         input.add(pan);
-        
-        input.setBounds(100, 100, 500, 440);
+
+        input.setBounds(100, 100, 400, 140);
         input.setVisible(true);
 
     }
@@ -178,36 +214,39 @@ public class EmployeeView extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		//조회
 		if (e.getSource() == selectbtn) {
 			MemberView.area.setText("");
-			ProductDAO dao = new ProductDAO();
-			System.out.println("조회");
+			dao = new ProductDAO();
 			dao.Select(dto);
 		}
+		//삽입
 		if(e.getSource() == insertbtn) {
 			this.Insert();
 		}
 		if(e.getSource() == enter) {
 			dto = new ProductDTO(name.getText(), brand.getText(), price.getText(), volume.getText(), code.getText());
-			ProductDAO dao = new ProductDAO();
+			dao = new ProductDAO();
 			dao.Insert(dto);
 			input.setVisible(false);
 		}
+		// 수정
 		if (e.getSource() == updatebtn) {
 			this.Update();
 		}
 		if(e.getSource() == Update) {
 			dto = new ProductDTO(name.getText(), brand.getText(), price.getText(), volume.getText(), code.getText());
-			ProductDAO dao = new ProductDAO();
+			dao = new ProductDAO();
 			dao.Update(dto);
 			input.setVisible(false);
 		}
+		// 삭제
 		if(e.getSource() == deletebtn) {
 			this.Delete();
 		}
 		if(e.getSource()== Delete) {
 			dto = new ProductDTO(code.getText());
-			ProductDAO dao = new ProductDAO();
+			dao = new ProductDAO();
 			dao.Delete(dto);
 			input.setVisible(false);
 		}
