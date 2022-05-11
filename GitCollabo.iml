@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="GitCollabo" level="project" />
     <orderEntry type="library" name="mysql-connector-java-8.0.29" level="project" />
+    <orderEntry type="library" name="ojdbc6-11.2.0.3" level="project" />
   </component>
 </module>
