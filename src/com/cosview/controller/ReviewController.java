@@ -12,7 +12,6 @@ public class ReviewController implements SubController {
 
     @Override
     public boolean execute(int num, DTO dto) {
-
         //downcasting
         ReviewDTO rdto = (ReviewDTO) dto;
 
