@@ -1,19 +1,22 @@
 package com.cosview.dto;
 
-public class ReviewDTO extends DTO{
-        private String name;
-        private String price;
-        private String volume;
-        private String review;
+public class ReviewDTO extends DTO {
+    private String name; //제목
+    private String id; // 회원아이디
+    private String nickname; //회원닉네임
+    private String pname; //상품이름
+    private String contents; //리뷰내용
+    private int score; //점수
+    private int time; //시간
 
-    public ReviewDTO(String name, String price, String volume, String review) {
+    public ReviewDTO(String name, String id, String nickname, String pname, String contents, int score, int time) {
         this.name = name;
-        this.price = price;
-        this.volume = volume;
-        this.review = review;
-    }
-    public ReviewDTO(String name){
-        this.name = name;
+        this.id = id;
+        this.nickname = nickname;
+        this.pname = pname;
+        this.contents = contents;
+        this.score = score;
+        this.time = time;
     }
 
     public String getName() {
@@ -24,37 +27,64 @@ public class ReviewDTO extends DTO{
         this.name = name;
     }
 
-    public String getPrice() {
-        return price;
+    public String getId() {
+        return id;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getVolume() {
-        return volume;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setVolume(String volume) {
-        this.volume = volume;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
-    public String getReview() {
-        return review;
+    public String getPname() {
+        return pname;
     }
 
-    public void setReview(String riview) {
-        this.review = riview;
+    public void setPname(String pname) {
+        this.pname = pname;
+    }
+
+    public String getContents() {
+        return contents;
+    }
+
+    public void setContents(String contents) {
+        this.contents = contents;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
     }
 
     @Override
     public String toString() {
-        return "RiviewDTO{" +
+        return "ReviewDTO{" +
                 "name='" + name + '\'' +
-                ", price='" + price + '\'' +
-                ", volume='" + volume + '\'' +
-                ", riview='" + review + '\'' +
+                ", id='" + id + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", pname='" + pname + '\'' +
+                ", contents='" + contents + '\'' +
+                ", score=" + score +
+                ", time=" + time +
                 '}';
     }
 }

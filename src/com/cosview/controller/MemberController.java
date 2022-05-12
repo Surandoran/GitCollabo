@@ -13,7 +13,7 @@ public class MemberController implements SubController{
 
         MemberDTO mdto = (MemberDTO)dto;
 
-        //조회 1,삽입 2,수정 3,삭제 4
+        // 1: 멤버조회 2: 회원가입 3: 회원수정 4:회원삭제
         if(num==1){
             return service.MSelect(mdto);
         }else if(num==2) {

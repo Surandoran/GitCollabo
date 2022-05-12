@@ -5,10 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.cosview.dto.DTO;
-import com.cosview.dto.ProductDTO;
-
-
-
 
 
 public class FrontController {
@@ -22,7 +18,7 @@ public class FrontController {
 	private void Init() {
 		map.put("COSMETIC",new ProductController());
 		map.put("AUTH", new AuthController());
-		map.put("RIVIEW", new RiviewController());
+		map.put("RIVIEW", new ReviewController());
 		map.put("MEMBER", new MemberController());
 	}
 	//MAP에 있는 서브컨트롤러를 꺼내어 해당 컨트롤러를 실행하는 함수

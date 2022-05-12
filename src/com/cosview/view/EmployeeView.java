@@ -212,12 +212,12 @@ public class EmployeeView extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//조회
+		//상품조회
 		if (e.getSource() == selectbtn) {
 			MemberView.area.setText("");
 			dao.Select(dto);
 		}
-		//삽입
+		//상품삽입
 		if(e.getSource() == insertbtn) {
 			this.Insert();
 		}
@@ -231,7 +231,7 @@ public class EmployeeView extends JFrame implements ActionListener{
 				JOptionPane.showMessageDialog(null, "상품삽입실패!");
 			}
 		}
-		// 수정
+		// 상품수정
 		if (e.getSource() == updatebtn) {
 			this.Update();
 		}
@@ -245,7 +245,7 @@ public class EmployeeView extends JFrame implements ActionListener{
 				JOptionPane.showMessageDialog(null, "수정실패!");
 			}
 		}
-		// 삭제
+		// 상품삭제
 		if(e.getSource() == deletebtn) {
 			this.Delete();
 		}

@@ -1,13 +1,12 @@
 package com.cosview.controller;
 
-import com.cosview.domain.ReviewDAO;
 import com.cosview.dto.DTO;
 import com.cosview.dto.ReviewDTO;
 
 import com.cosview.service.ReviewService;
 
 
-public class RiviewController implements SubController {
+public class ReviewController implements SubController {
 
     ReviewService service = new ReviewService();
 

@@ -4,6 +4,7 @@ import com.cosview.domain.MemberDAO;
 import com.cosview.dto.MemberDTO;
 
 public class MemberService {
+    //회원가입 서비스
 
     MemberDAO dao = new MemberDAO();
 

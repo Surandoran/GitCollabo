@@ -22,8 +22,9 @@ public class ReviewDAO extends DAO {
 
             while (rs.next()) {
                 System.out.println(
-                        rs.getString("name") + "\t" + rs.getString("price") + "\t" + rs.getString("volume") + "\t" + rs.getString("review"
-                        )
+                        rs.getString("name") + "\t" + rs.getString("id") + "\t" + rs.getString("nickname")
+                                + "\t" + rs.getString("pname") + "\t" + rs.getString("contents") + "\t" + rs.getInt("score")
+
                 );
 
             }
@@ -42,13 +43,15 @@ public class ReviewDAO extends DAO {
         return false;
     }
 
-    public boolean RInsert(ReviewDTO dto) {    //삽입
+    public boolean RInsert(ReviewDTO dto) {    //삽입 //제목,닉네임,상품이름,리뷰내용,점수,시간
         try {
-            pstmt = conn.prepareStatement("insert into review_tbl values(?,?,?,?)");
+            pstmt = conn.prepareStatement("insert into review_tbl values(?,?,?,?,?,?)");
             pstmt.setString(1, dto.getName());
-            pstmt.setString(2, dto.getPrice());
-            pstmt.setString(3, dto.getVolume());
-            pstmt.setString(4, dto.getReview());
+            pstmt.setString(2, dto.getNickname());
+            pstmt.setString(3, dto.getPname());
+            pstmt.setString(4, dto.getContents());
+            pstmt.setInt(5, dto.getScore());
+            pstmt.setInt(6, dto.getTime());
 
             result = pstmt.executeUpdate();
 
@@ -70,13 +73,11 @@ public class ReviewDAO extends DAO {
 
     public boolean RUpdate(ReviewDTO dto) {
         try {
-            //SQL전송 객체
-            pstmt = conn.prepareStatement("update review_Tbl set name=?,price=?,volume=?,review=? where name=?");
+            //SQL전송 객체 //리뷰 제목을 받아 리뷰 내용을 수정그리고 시간을 받음
+            pstmt = conn.prepareStatement("update review_Tbl set name=?,contents=?,time=? where name=?");
             pstmt.setString(1, dto.getName());
-            pstmt.setString(2, dto.getPrice());
-            pstmt.setString(3, dto.getVolume());
-            pstmt.setString(4, dto.getReview());
-
+            pstmt.setString(2, dto.getContents());
+            pstmt.setInt(3, dto.getTime());
             //SQL전송
             result = pstmt.executeUpdate();
 
