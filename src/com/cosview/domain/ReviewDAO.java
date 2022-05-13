@@ -6,11 +6,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Scanner;
 
+import com.cosview.dto.MemberDTO;
 import com.cosview.dto.ReviewDTO;
 
 
 public class ReviewDAO extends DAO {
     int result;
+    double D;
+    DAO dao = new DAO();
 
     public boolean RInqury(ReviewDTO dto) {    //조회
         try {
@@ -45,13 +48,12 @@ public class ReviewDAO extends DAO {
 
     public boolean RInsert(ReviewDTO dto) {    //삽입 //제목,닉네임,상품이름,리뷰내용,점수,시간
         try {
-            pstmt = conn.prepareStatement("insert into review_tbl values(?,?,?,?,?,?)");
+            pstmt = conn.prepareStatement("insert into review_tbl values(?,?,?,?,?)");
             pstmt.setString(1, dto.getName());
             pstmt.setString(2, dto.getNickname());
             pstmt.setString(3, dto.getPname());
             pstmt.setString(4, dto.getContents());
-            pstmt.setInt(5, dto.getScore());
-            pstmt.setInt(6, dto.getTime());
+            pstmt.setString(6, dao.time());
 
             result = pstmt.executeUpdate();
 
@@ -77,7 +79,7 @@ public class ReviewDAO extends DAO {
             pstmt = conn.prepareStatement("update review_Tbl set name=?,contents=?,time=? where name=?");
             pstmt.setString(1, dto.getName());
             pstmt.setString(2, dto.getContents());
-            pstmt.setInt(3, dto.getTime());
+            pstmt.setString(3, dao.time());
             //SQL전송
             result = pstmt.executeUpdate();
 
@@ -103,7 +105,7 @@ public class ReviewDAO extends DAO {
         try {
             //SQL전송객체 생성
             pstmt = conn.prepareStatement("delete from review_tbl where name=?");
-            pstmt.setString(1, dto.getName());
+            pstmt.setString(1, dto.getName()); //제목을 받아 삭제
 
             //SQL 전송
             result = pstmt.executeUpdate();

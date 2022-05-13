@@ -1,31 +1,44 @@
 package com.cosview.main;
 
+import com.cosview.domain.DAO;
+import com.cosview.view.ReviewView;
+
+import javax.swing.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
-public class test {
+public class test extends JFrame {
 
     public static void main(String[] args) {
-        // 현재 날짜 구하기 (시스템 시계, 시스템 타임존)
-        LocalDate now1 = LocalDate.now();
-// 현재 날짜 구하기(Paris)
-        LocalDate parisNow = LocalDate.now(ZoneId.of("Europe/Paris"));
-// 결과 출력
-        System.out.println(now1); // 2021-06-17
-        System.out.println(parisNow); // 2021-06-16
-        // 현재 시간
-        LocalTime now2 = LocalTime.now();
-// 현재시간 출력
-        System.out.println(now2); // 06:20:57.008731300
-// 포맷 정의하기
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-// 포맷 적용하기
-        String formatedNow = now2.format(formatter);
-// 포맷 적용된 현재 시간 출력
-        System.out.println(formatedNow); // 06시 20분 57초
 
+        ReviewView re = new ReviewView();
+        re.ReviewView();
+
+//        double total = 0.0;
+//        Scanner sc = new Scanner(System.in);
+//
+//        int stNum = sc.nextInt(); //사람수
+//
+//        int[] arrSt = new int[stNum];
+//
+//        for(int i = 0; i < stNum; i++) {
+//            System.out.print("사람" + (i + 1) + "의 점수 : ");
+//            arrSt[i] = sc.nextInt();
+//            if(arrSt[i] > 10 || arrSt[i] < 0) { // 점수가 0미만이거나 10초과인 경우
+//                System.out.println("잘못된 점수 입니다. 다시 입력해 주세요.");
+//                i--;
+//                continue;
+//            }
+//        }
+//
+//        for(int i = 0; i < stNum; i++) {
+//            total += arrSt[i];
+//        }
+//        System.out.println("학생 " + stNum + "명의 총합은 " + total +  "점 입니다.");
+//        System.out.println("학생 " + stNum + "명의 평군은 " +Math.round(total / stNum * 100) / 100f +  "점 입니다.");
 
     }
 

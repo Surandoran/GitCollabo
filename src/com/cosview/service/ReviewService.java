@@ -27,4 +27,10 @@ public class ReviewService {
     public boolean RDelete(ReviewDTO dto) {
         return dao.RDelete(dto);
     }
+
+    //점수삽입
+    public boolean Ravg(ReviewDTO dto){
+//        return dao.Ravg(dto);
+        return false;
+    }
 }

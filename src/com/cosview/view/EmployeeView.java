@@ -16,6 +16,7 @@ public class EmployeeView extends JFrame implements ActionListener{
 	FrontController controller = new FrontController();
 	ProductDAO dao = new ProductDAO();
 	ProductDTO dto;
+	ReviewView view;
 	boolean r;
 
 	JButton selectbtn, insertbtn, updatebtn, deletebtn, reviewbtn,enter, Update, Delete;
@@ -259,6 +260,9 @@ public class EmployeeView extends JFrame implements ActionListener{
 			}else{
 				JOptionPane.showMessageDialog(null, "삭제실패!");
 			}
+		}
+		if(e.getSource() == reviewbtn){
+			view.ReviewView();
 		}
 		
 		

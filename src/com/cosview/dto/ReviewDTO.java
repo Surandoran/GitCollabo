@@ -7,9 +7,9 @@ public class ReviewDTO extends DTO {
     private String pname; //상품이름
     private String contents; //리뷰내용
     private int score; //점수
-    private int time; //시간
+    private String time; //시간
 
-    public ReviewDTO(String name, String id, String nickname, String pname, String contents, int score, int time) {
+    public ReviewDTO(String name, String id, String nickname, String pname, String contents, int score, String time) {
         this.name = name;
         this.id = id;
         this.nickname = nickname;
@@ -67,11 +67,11 @@ public class ReviewDTO extends DTO {
         this.score = score;
     }
 
-    public int getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -84,7 +84,7 @@ public class ReviewDTO extends DTO {
                 ", pname='" + pname + '\'' +
                 ", contents='" + contents + '\'' +
                 ", score=" + score +
-                ", time=" + time +
+                ", time='" + time + '\'' +
                 '}';
     }
 }

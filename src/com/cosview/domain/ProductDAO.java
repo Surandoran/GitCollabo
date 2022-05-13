@@ -12,11 +12,13 @@ import com.cosview.view.MemberView;
 public class ProductDAO extends DAO{
 
 	int result;
-	
+	DAO dao = new DAO();
 	//생성자
 //	public ProductDAO() {}
 	
 	public boolean Select(ProductDTO dto) {
+
+		dao.time();
 		try {
 			
 			pstmt =conn.prepareStatement("select * from product_tbl");
