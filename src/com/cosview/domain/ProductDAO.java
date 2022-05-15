@@ -18,7 +18,6 @@ public class ProductDAO extends DAO{
 	
 	public boolean Select(ProductDTO dto) {
 
-		dao.time();
 		try {
 			
 			pstmt =conn.prepareStatement("select * from product_tbl");

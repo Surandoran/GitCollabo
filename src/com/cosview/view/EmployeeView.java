@@ -16,7 +16,7 @@ public class EmployeeView extends JFrame implements ActionListener{
 	FrontController controller = new FrontController();
 	ProductDAO dao = new ProductDAO();
 	ProductDTO dto;
-	ReviewView view;
+	ReviewView rv;
 	boolean r;
 
 	JButton selectbtn, insertbtn, updatebtn, deletebtn, reviewbtn,enter, Update, Delete;
@@ -76,6 +76,7 @@ public class EmployeeView extends JFrame implements ActionListener{
 	    insertbtn.addActionListener(this);
 	    updatebtn.addActionListener(this);
 	    deletebtn.addActionListener(this);
+		reviewbtn.addActionListener(this);
 	    
 	    add(p1);
 	    setVisible(true);
@@ -262,7 +263,7 @@ public class EmployeeView extends JFrame implements ActionListener{
 			}
 		}
 		if(e.getSource() == reviewbtn){
-			view.ReviewView();
+			new ReviewView();
 		}
 		
 		

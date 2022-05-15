@@ -53,7 +53,7 @@ public class ReviewDAO extends DAO {
             pstmt.setString(2, dto.getNickname());
             pstmt.setString(3, dto.getPname());
             pstmt.setString(4, dto.getContents());
-            pstmt.setString(6, dao.time());
+            pstmt.setString(6, dto.getTime());
 
             result = pstmt.executeUpdate();
 
@@ -79,7 +79,7 @@ public class ReviewDAO extends DAO {
             pstmt = conn.prepareStatement("update review_Tbl set name=?,contents=?,time=? where name=?");
             pstmt.setString(1, dto.getName());
             pstmt.setString(2, dto.getContents());
-            pstmt.setString(3, dao.time());
+            pstmt.setString(3, dto.getTime());
             //SQL전송
             result = pstmt.executeUpdate();
 

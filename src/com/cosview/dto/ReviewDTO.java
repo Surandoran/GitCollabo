@@ -19,6 +19,28 @@ public class ReviewDTO extends DTO {
         this.time = time;
     }
 
+    public ReviewDTO(String name, String nickname, String pname, String contents, String time) {
+        this.name = name;
+        this.nickname = nickname;
+        this.pname = pname;
+        this.contents = contents;
+        this.time = time;
+    }
+
+    public ReviewDTO(String name, String contents, String time) {
+        this.name = name;
+        this.contents = contents;
+        this.time = time;
+    }
+
+    public ReviewDTO(String name) {
+        this.name = name;
+    }
+
+    public ReviewDTO(int score) {
+        this.score = score;
+    }
+
     public String getName() {
         return name;
     }

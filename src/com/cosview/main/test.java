@@ -14,8 +14,8 @@ public class test extends JFrame {
 
     public static void main(String[] args) {
 
-        ReviewView re = new ReviewView();
-        re.ReviewView();
+        new ReviewView();
+//        re.ReviewView();
 
 //        double total = 0.0;
 //        Scanner sc = new Scanner(System.in);
