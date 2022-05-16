@@ -21,24 +21,21 @@ public class ReviewView extends JFrame implements ActionListener {
 	//제목 텍스트,내용 텍스트
 	//별점 버튼
 	boolean r;
-
 	FrontController controller = new FrontController();
 
-	JButton writebtn, viewbtn; //확인,뒤로가기 버튼
 	EmployeeView EV; //뒤로가기를 눌렀을때 나오는 뷰
 	JTextField name,id,nickname,pname,contents,score,time;	//제목,회원아이디,닉네임,상품이름,리뷰내용,점수
 	JFrame input;
 	JPanel pan;
 	Font font;
+	JLabel L1,L2,L3,L4,L5;
 	JComboBox jc;
 	JTextArea area;
-	ReviewDAO dao;
-	JButton insert;	//리뷰쓰기버튼
-	JButton update; //리뷰수정버튼
-	JButton select; //리뷰조회버튼
-	JButton delete; //리뷰삭제버튼
+	JScrollPane scroll;
+	JButton insert,update,select,delete;	//리뷰쓰기버튼
 	ReviewDAO rdao = new ReviewDAO();
 	ReviewDTO rdto;
+	DAO dao;
 
 
 	String[] Function = {"기능을선택하세요","select","insert","update","delete"};
@@ -59,6 +56,18 @@ public class ReviewView extends JFrame implements ActionListener {
 	}
 
 	public void Rselect(){
+		setTitle("리뷰확인");
+		this.setBounds(0,0,1280,720);
+		Font font = new Font("Serif", Font.BOLD, 18);
+		this.setResizable(false);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		pan = new JPanel();
+		pan.setLayout(null);
+		insert = new JButton("리뷰검색");
+		insert.setBounds(1100,80,100,50);
+
+
 	}
 	public void Rinsert(){
 	}
@@ -81,8 +90,7 @@ public class ReviewView extends JFrame implements ActionListener {
 					Rselect();
 					if(e.getSource() == select){
 						area.setText("");
-						dao = new ReviewDAO();
-						dao.RSelect(rdto);
+						rdao.RSelect(rdto);
 					}
 					break;
 				case 2:
