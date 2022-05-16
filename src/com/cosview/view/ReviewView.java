@@ -2,6 +2,7 @@ package com.cosview.view;
 
 import com.cosview.controller.FrontController;
 import com.cosview.domain.DAO;
+import com.cosview.domain.ProductDAO;
 import com.cosview.domain.ReviewDAO;
 import com.cosview.dto.ReviewDTO;
 import jdk.nashorn.internal.scripts.JO;
@@ -30,6 +31,8 @@ public class ReviewView extends JFrame implements ActionListener {
 	JPanel pan;
 	Font font;
 	JComboBox jc;
+	JTextArea area;
+	ReviewDAO dao;
 	JButton insert;	//리뷰쓰기버튼
 	JButton update; //리뷰수정버튼
 	JButton select; //리뷰조회버튼
@@ -76,11 +79,15 @@ public class ReviewView extends JFrame implements ActionListener {
 			switch (jc.getSelectedIndex()){
 				case 1:
 					Rselect();
-
+					if(e.getSource() == select){
+						area.setText("");
+						dao = new ReviewDAO();
+						dao.RSelect(rdto);
+					}
 					break;
 				case 2:
 					Rinsert();
-					rdto = new ReviewDTO(name.getText(),nickname.getText(),pname.getText(),contents.getText(),time.getText());
+					rdto = new ReviewDTO(name.getText(),nickname.getText(),pname.getText(),contents.getText(),dao.time());
 
 					r = controller.SubControllerEX("REVIEW", 2, rdto);
 					if(r){

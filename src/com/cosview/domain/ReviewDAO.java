@@ -8,14 +8,18 @@ import java.util.Scanner;
 
 import com.cosview.dto.MemberDTO;
 import com.cosview.dto.ReviewDTO;
+import com.cosview.view.MemberView;
+
+import javax.swing.*;
 
 
 public class ReviewDAO extends DAO {
     int result;
     double D;
     DAO dao = new DAO();
+    JButton btn;
 
-    public boolean RInqury(ReviewDTO dto) {    //조회
+    public boolean RSelect(ReviewDTO dto) {    //조회
         try {
             //SQL 전송 객체
             pstmt = conn.prepareStatement("select * from review_tbl");
@@ -23,12 +27,9 @@ public class ReviewDAO extends DAO {
             //SQL 실행
             rs = pstmt.executeQuery();
 
-            while (rs.next()) {
-                System.out.println(
-                        rs.getString("name") + "\t" + rs.getString("id") + "\t" + rs.getString("nickname")
-                                + "\t" + rs.getString("pname") + "\t" + rs.getString("contents") + "\t" + rs.getInt("score")
 
-                );
+            while (rs.next()) {
+                MemberView.area.append(rs.getString("name"));
 
             }
             if (result != 0) {
@@ -116,7 +117,11 @@ public class ReviewDAO extends DAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            try {pstmt.close();} catch (Exception e1) {e1.printStackTrace();}
+            try {
+                pstmt.close();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
         }
         return false;
 

@@ -10,7 +10,7 @@ public class ReviewService {
 
     //조회
     public boolean RInqury(ReviewDTO dto) {
-        return dao.RInqury(dto);
+        return dao.RSelect(dto);
     }
 
     //추가

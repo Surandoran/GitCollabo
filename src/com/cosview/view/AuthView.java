@@ -36,6 +36,7 @@ public class AuthView extends JFrame implements ActionListener {
     JLabel mem;
     ButtonGroup radiogroup;
     FrontController controller = new FrontController();
+    EmployeeView s = new EmployeeView();
     ImageIcon icon;
 
     public AuthView() {
@@ -138,8 +139,7 @@ public class AuthView extends JFrame implements ActionListener {
             AuthDTO dto = new AuthDTO(txt1.getText(), txt2.getText());
             boolean r1 = controller.SubControllerEX("AUTH", 2, dto);
             if (r1) {
-                EmployeeView s = new EmployeeView();
-
+                s.EmployeeView();
                 System.out.println("로그인 성공");
                 JOptionPane.showMessageDialog(null, "접속완료.");
             } else {

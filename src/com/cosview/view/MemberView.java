@@ -60,8 +60,7 @@ public class MemberView extends JFrame implements ActionListener{
 		this.add(p1);
 		setVisible(true);
 	}
-	
-	
+
 	
 	
 

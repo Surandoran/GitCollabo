@@ -25,7 +25,7 @@ public class EmployeeView extends JFrame implements ActionListener{
 	JPanel p1, pan;
 	JLabel L1,L2,L3,L4,L5;
 	JFrame input;
-	public EmployeeView() {
+	public void EmployeeView() {
 		setTitle("관리시스템");
 		this.setBounds(100,100,600,500);
 		Font font = new Font("Serif", Font.BOLD, 18);
@@ -214,6 +214,7 @@ public class EmployeeView extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+//
 		//상품조회
 		if (e.getSource() == selectbtn) {
 			MemberView.area.setText("");

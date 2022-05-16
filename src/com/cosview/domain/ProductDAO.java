@@ -9,10 +9,14 @@ import java.sql.SQLException;
 import com.cosview.dto.ProductDTO;
 import com.cosview.view.MemberView;
 
+import javax.swing.*;
+
 public class ProductDAO extends DAO{
 
 	int result;
 	DAO dao = new DAO();
+
+	JButton btn = new JButton();
 	//생성자
 //	public ProductDAO() {}
 	
@@ -27,7 +31,6 @@ public class ProductDAO extends DAO{
 			while(rs.next()) {
 				MemberView.area.append(rs.getString("name") + " " + rs.getString("brand") + " "
 						+ rs.getString("price") + " " + rs.getString("volume") + "\n");
-				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
