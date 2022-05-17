@@ -18,7 +18,7 @@ public class FrontController {
 	private void Init() {
 		map.put("COSMETIC",new ProductController());
 		map.put("AUTH", new AuthController());
-		map.put("RIVIEW", new ReviewController());
+		map.put("review", new ReviewController());
 		map.put("MEMBER", new MemberController());
 	}
 	//MAP에 있는 서브컨트롤러를 꺼내어 해당 컨트롤러를 실행하는 함수
@@ -30,8 +30,8 @@ public class FrontController {
 		}else if (menu.equals("AUTH")) {
 			tmp = map.get("AUTH");
 			return tmp.execute(num, dto);
-		}else if (menu.equals("RIVIEW")) {
-            tmp = map.get("RIVIEW");
+		}else if (menu.equals("review")) {
+            tmp = map.get("review");
             return tmp.execute(num, dto);
         } else if (menu.equals("MEMBER")) {
 			tmp = map.get("MEMBER");

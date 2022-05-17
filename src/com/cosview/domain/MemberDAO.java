@@ -39,6 +39,7 @@ public class MemberDAO extends DAO{
         return false;
     }
 
+
     public boolean MInsert(MemberDTO dto) {    //삽입
         try {
             pstmt = conn.prepareStatement("insert into member_tbl values(?,?,?,?,?,?,?)");

@@ -19,6 +19,10 @@ public class MemberDTO extends DTO {
 		this.gender = gender;
 	}
 
+	public MemberDTO(String id) {
+		this.id = id;
+	}
+
 	public String getNickName() {
 		return nickName;
 	}

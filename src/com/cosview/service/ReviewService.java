@@ -9,7 +9,7 @@ public class ReviewService {
     ReviewDAO dao = new ReviewDAO();
 
     //조회
-    public boolean RInqury(ReviewDTO dto) {
+    public boolean RSelect(ReviewDTO dto) {
         return dao.RSelect(dto);
     }
 
@@ -28,9 +28,4 @@ public class ReviewService {
         return dao.RDelete(dto);
     }
 
-    //점수삽입
-    public boolean Ravg(ReviewDTO dto){
-//        return dao.Ravg(dto);
-        return false;
-    }
 }

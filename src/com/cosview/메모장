@@ -1,0 +1,20 @@
+01 기본 CRUD
+- 테이블 추가 create
+-        변경 alter
+-        삭제 drop
+02 SELECT 옵션
+- where 절 and,ㅐㄱ,ㅠㄷㅅㅈㄷ두,ㅑㅜ,ㅣㅑㅏㄷ
+  order by
+  group by + 집계함수(sum..)
+03 SEQUENCE(중요) 능력평가x
+04 VIEW(나옴)
+05 제약조건(나옴)
+    pk 제약조건 - fk제약조건 + cascade옵션(Delete)
+    제약조건 검색 ALL_CONSTRAINTS .. ALL_INDEXS..
+06 INDEX(나옴)
+07 트랜젝션(x)
+08 조인(나옴)
+09 PL/SQL(x)
+10 커서(x)
+11 프로시저(x)
+12 트리거(x)

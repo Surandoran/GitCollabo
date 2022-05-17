@@ -2,42 +2,28 @@ package com.cosview.dto;
 
 public class ReviewDTO extends DTO {
     private String name; //제목
-    private String id; // 회원아이디
-    private String nickname; //회원닉네임
-    private String pname; //상품이름
-    private String contents; //리뷰내용
-    private int score; //점수
-    private String time; //시간
+    private String member_nickname;
+    private String member_id; // 회원아이디
+    private String product_name;
+    private String rcontents; //리뷰내용
+    private String score; //점수
+    private String insert_time; //시간
 
-    public ReviewDTO(String name, String id, String nickname, String pname, String contents, int score, String time) {
+    public ReviewDTO(String name, String member_nickname, String member_id, String product_name, String rcontents, String score, String insert_time) {
         this.name = name;
-        this.id = id;
-        this.nickname = nickname;
-        this.pname = pname;
-        this.contents = contents;
+        this.member_nickname = member_nickname;
+        this.member_id = member_id;
+        this.product_name = product_name;
+        this.rcontents = rcontents;
         this.score = score;
-        this.time = time;
+        this.insert_time = insert_time;
     }
 
-    public ReviewDTO(String name, String nickname, String pname, String contents, String time) {
+    public ReviewDTO(String name, String member_nickname, String product_name, String rcontents, String score) {
         this.name = name;
-        this.nickname = nickname;
-        this.pname = pname;
-        this.contents = contents;
-        this.time = time;
-    }
-
-    public ReviewDTO(String name, String contents, String time) {
-        this.name = name;
-        this.contents = contents;
-        this.time = time;
-    }
-
-    public ReviewDTO(String name) {
-        this.name = name;
-    }
-
-    public ReviewDTO(int score) {
+        this.member_nickname = member_nickname;
+        this.product_name = product_name;
+        this.rcontents = rcontents;
         this.score = score;
     }
 
@@ -49,64 +35,64 @@ public class ReviewDTO extends DTO {
         this.name = name;
     }
 
-    public String getId() {
-        return id;
+    public String getMember_nickname() {
+        return member_nickname;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setMember_nickname(String member_nickname) {
+        this.member_nickname = member_nickname;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getMember_id() {
+        return member_id;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setMember_id(String member_id) {
+        this.member_id = member_id;
     }
 
-    public String getPname() {
-        return pname;
+    public String getProduct_name() {
+        return product_name;
     }
 
-    public void setPname(String pname) {
-        this.pname = pname;
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
     }
 
-    public String getContents() {
-        return contents;
+    public String getRcontents() {
+        return rcontents;
     }
 
-    public void setContents(String contents) {
-        this.contents = contents;
+    public void setRcontents(String rcontents) {
+        this.rcontents = rcontents;
     }
 
-    public int getScore() {
+    public String getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(String score) {
         this.score = score;
     }
 
-    public String getTime() {
-        return time;
+    public String getInsert_time() {
+        return insert_time;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setInsert_time(String insert_time) {
+        this.insert_time = insert_time;
     }
 
     @Override
     public String toString() {
         return "ReviewDTO{" +
                 "name='" + name + '\'' +
-                ", id='" + id + '\'' +
-                ", nickname='" + nickname + '\'' +
-                ", pname='" + pname + '\'' +
-                ", contents='" + contents + '\'' +
-                ", score=" + score +
-                ", time='" + time + '\'' +
+                ", member_nickname='" + member_nickname + '\'' +
+                ", member_id='" + member_id + '\'' +
+                ", product_name='" + product_name + '\'' +
+                ", rcontents='" + rcontents + '\'' +
+                ", score='" + score + '\'' +
+                ", insert_time='" + insert_time + '\'' +
                 '}';
     }
 }

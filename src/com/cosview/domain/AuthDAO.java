@@ -9,7 +9,7 @@ public class AuthDAO extends DAO {
     public AuthDAO(){};
 
     //회원 로그인 1
-    public boolean MemberLogin(AuthDTO dto) {
+    public MemberDTO MemberLogin(AuthDTO dto) {
         try {
             pstmt = conn.prepareStatement("select id,pw from member_tbl where id=?");
             pstmt.setString(1, dto.getId());

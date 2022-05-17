@@ -9,15 +9,14 @@ import java.util.Scanner;
 import com.cosview.dto.MemberDTO;
 import com.cosview.dto.ReviewDTO;
 import com.cosview.view.MemberView;
+import com.cosview.view.ReviewView;
 
 import javax.swing.*;
 
 
 public class ReviewDAO extends DAO {
     int result;
-    double D;
     DAO dao = new DAO();
-    JButton btn;
 
     public boolean RSelect(ReviewDTO dto) {    //조회
         try {
@@ -29,7 +28,7 @@ public class ReviewDAO extends DAO {
 
 
             while (rs.next()) {
-                MemberView.area.append(rs.getString("name"));
+                ReviewView.area.append(rs.getString("name"));
 
             }
             if (result != 0) {
@@ -49,12 +48,12 @@ public class ReviewDAO extends DAO {
 
     public boolean RInsert(ReviewDTO dto) {    //삽입 //제목,닉네임,상품이름,리뷰내용,점수,시간
         try {
-            pstmt = conn.prepareStatement("insert into review_tbl values(?,?,?,?,?)");
+            pstmt = conn.prepareStatement("insert into review_tbl(name,member_nickname,product_name,rcontents,score) values(?,?,?,?,?)");
             pstmt.setString(1, dto.getName());
-            pstmt.setString(2, dto.getNickname());
-            pstmt.setString(3, dto.getPname());
-            pstmt.setString(4, dto.getContents());
-            pstmt.setString(6, dto.getTime());
+            pstmt.setString(2, dto.getMember_nickname());
+            pstmt.setString(3, dto.getProduct_name());
+            pstmt.setString(4, dto.getRcontents());
+            pstmt.setString(5, dto.getScore());
 
             result = pstmt.executeUpdate();
 
@@ -79,8 +78,8 @@ public class ReviewDAO extends DAO {
             //SQL전송 객체 //리뷰 제목을 받아 리뷰 내용을 수정그리고 시간을 받음
             pstmt = conn.prepareStatement("update review_Tbl set name=?,contents=?,time=? where name=?");
             pstmt.setString(1, dto.getName());
-            pstmt.setString(2, dto.getContents());
-            pstmt.setString(3, dto.getTime());
+            pstmt.setString(2, dto.getRcontents());
+            pstmt.setString(3, dto.getInsert_time());
             //SQL전송
             result = pstmt.executeUpdate();
 

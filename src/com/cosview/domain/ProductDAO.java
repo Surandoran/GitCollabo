@@ -16,7 +16,6 @@ public class ProductDAO extends DAO{
 	int result;
 	DAO dao = new DAO();
 
-	JButton btn = new JButton();
 	//생성자
 //	public ProductDAO() {}
 	
