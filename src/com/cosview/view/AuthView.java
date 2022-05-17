@@ -39,6 +39,8 @@ public class AuthView extends JFrame implements ActionListener {
     EmployeeView s = new EmployeeView();
     ImageIcon icon;
 
+    AuthDTO dto;
+
     public AuthView() {
         setTitle("cosview");
         this.setBounds(100, 100, 600, 400);
@@ -125,7 +127,7 @@ public class AuthView extends JFrame implements ActionListener {
     @Override
     public void actionPerformed (ActionEvent e){
         if (member.isSelected() && e.getSource() == btn1) {
-            AuthDTO dto = new AuthDTO(txt1.getText(), txt2.getText());
+            dto = new AuthDTO(txt1.getText(), txt2.getText());
             boolean r1 = controller.SubControllerEX("AUTH", 1, dto);
             if (r1) {
                 System.out.println("로그인 성공");
@@ -136,7 +138,7 @@ public class AuthView extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "ID PW 다릅니다.");
             }
         } else if (employee.isSelected() && e.getSource() == btn1) {
-            AuthDTO dto = new AuthDTO(txt1.getText(), txt2.getText());
+            dto = new AuthDTO(txt1.getText(), txt2.getText());
             boolean r1 = controller.SubControllerEX("AUTH", 2, dto);
             if (r1) {
                 s.EmployeeView();

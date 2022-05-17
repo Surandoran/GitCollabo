@@ -6,10 +6,13 @@ import com.cosview.view.SignUpview;
 
 public class AuthDAO extends DAO {
 
+    MemberDTO mdto;
+    MemberDAO mdao = new MemberDAO();
+
     public AuthDAO(){};
 
     //회원 로그인 1
-    public MemberDTO MemberLogin(AuthDTO dto) {
+    public boolean MemberLogin(MemberDTO dto) {
         try {
             pstmt = conn.prepareStatement("select id,pw from member_tbl where id=?");
             pstmt.setString(1, dto.getId());
