@@ -9,7 +9,15 @@ public class MemberDTO extends DTO {
 	private String email;
 	private String gender;
 
-	public MemberDTO(String nickName, String id, String pw, String name, String addr, String email, String gender) {
+	public MemberDTO(
+			String nickName, 
+			String id,
+			String pw,
+			String name, 
+			String addr, 
+			String email,
+			String gender)
+	{
 		this.nickName = nickName;
 		this.id = id;
 		this.pw = pw;
