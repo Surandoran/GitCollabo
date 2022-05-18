@@ -1,15 +1,20 @@
 package com.cosview.view;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
@@ -18,8 +23,9 @@ import com.cosview.domain.AuthDAO;
 import com.cosview.domain.MemberDAO;
 import com.cosview.dto.MemberDTO;
 import com.cosview.main.Main;
-import jdk.nashorn.internal.scripts.JO;
 
+//https://d-life93.tistory.com/206 
+// 회원가입 스윙할려고하는데 인식이안되..위치를 모르겠어...
 public class SignUpview extends JFrame implements ActionListener {
 	
 	   Font fnt = new Font("굴림체",Font.BOLD,14);
@@ -173,7 +179,7 @@ public class SignUpview extends JFrame implements ActionListener {
 		            } else if(checkIDMethod(idSearch)==1){
 		               JOptionPane.showMessageDialog(this, "아이디는 특수문자 포함이 불가능합니다");
 		            } else {
-		               List<MemberDTO> result = dto.getidCheck(idSearch);
+		               List<MemberDTO> result = dto.MemberInsert(idSearch);
 		               if(result.size()==0) {
 		                  JOptionPane.showMessageDialog(this, "사용 가능한 아이디 입니다");
 		                  signUpBtn.setEnabled(true);
