@@ -1,6 +1,7 @@
 package com.cosview.controller;
 
 import com.cosview.domain.AuthDAO;
+import com.cosview.domain.DAO;
 import com.cosview.dto.AuthDTO;
 import com.cosview.dto.DTO;
 import com.cosview.dto.MemberDTO;
@@ -9,7 +10,7 @@ import com.cosview.service.AuthService;
 public class AuthController implements SubController{
 	AuthService service = new AuthService();
 
-
+	DAO dao = new DAO();
 
 		@Override
 		public boolean execute ( int num, DTO dto){

@@ -137,6 +137,7 @@ public class SignUpview extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == SignUpBtn){
+
             mdto = new MemberDTO(nicktxt.getText(),idtxt.getText(),pwtxt.getText(),nametxt.getText(),addrtxt.getText(),emailtxt.getText(),gendertxt.getText());
 
             r = controller.SubControllerEX("MEMBER", 2, mdto);
